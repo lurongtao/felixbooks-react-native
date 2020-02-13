@@ -1,0 +1,410 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Flexbox布局 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../thanks/README.md" />
+    
+    
+    <link rel="prev" href="width-and-height.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="getting-started.html">
+            
+                <a href="getting-started.html">
+            
+                    
+                    RN基础
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="getting-started.html">
+            
+                <a href="getting-started.html">
+            
+                    
+                    起步
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="learn-the-basics.html">
+            
+                <a href="learn-the-basics.html">
+            
+                    
+                    基础知识
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="props.html">
+            
+                <a href="props.html">
+            
+                    
+                    Props
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="state.html">
+            
+                <a href="state.html">
+            
+                    
+                    State
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="style.html">
+            
+                <a href="style.html">
+            
+                    
+                    Style
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="width-and-height.html">
+            
+                <a href="width-and-height.html">
+            
+                    
+                    宽和高
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.7" data-path="layout-with-flexbox.html">
+            
+                <a href="layout-with-flexbox.html">
+            
+                    
+                    Flexbox布局
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../thanks/README.md">
+            
+                <span>
+            
+                    
+                    感谢
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Flexbox布局</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x4F7F;&#x7528;-flexbox-&#x5E03;&#x5C40;">&#x4F7F;&#x7528; flexbox &#x5E03;&#x5C40;</h1>
+<p>&#x6211;&#x4EEC;&#x5728; React Native &#x4E2D;&#x4F7F;&#x7528; flexbox &#x89C4;&#x5219;&#x6765;&#x6307;&#x5B9A;&#x67D0;&#x4E2A;&#x7EC4;&#x4EF6;&#x7684;&#x5B50;&#x5143;&#x7D20;&#x7684;&#x5E03;&#x5C40;&#x3002;Flexbox &#x53EF;&#x4EE5;&#x5728;&#x4E0D;&#x540C;&#x5C4F;&#x5E55;&#x5C3A;&#x5BF8;&#x4E0A;&#x63D0;&#x4F9B;&#x4E00;&#x81F4;&#x7684;&#x5E03;&#x5C40;&#x7ED3;&#x6784;&#x3002;</p>
+<p>&#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;&#x4F7F;&#x7528; <code>flexDirection</code>&#x3001;<code>alignItems</code> &#x548C; <code>justifyContent</code> &#x4E09;&#x4E2A;&#x6837;&#x5F0F;&#x5C5E;&#x6027;&#x5C31;&#x5DF2;&#x7ECF;&#x80FD;&#x6EE1;&#x8DB3;&#x5927;&#x591A;&#x6570;&#x5E03;&#x5C40;&#x9700;&#x6C42;&#x3002;</p>
+<blockquote>
+<p>React Native &#x4E2D;&#x7684; Flexbox &#x7684;&#x5DE5;&#x4F5C;&#x539F;&#x7406;&#x548C; web &#x4E0A;&#x7684; CSS &#x57FA;&#x672C;&#x4E00;&#x81F4;&#xFF0C;&#x5F53;&#x7136;&#x4E5F;&#x5B58;&#x5728;&#x5C11;&#x8BB8;&#x5DEE;&#x5F02;&#x3002;&#x9996;&#x5148;&#x662F;&#x9ED8;&#x8BA4;&#x503C;&#x4E0D;&#x540C;&#xFF1A;flexDirection&#x7684;&#x9ED8;&#x8BA4;&#x503C;&#x662F;column&#x800C;&#x4E0D;&#x662F;row&#xFF0C;&#x800C;flex&#x4E5F;&#x53EA;&#x80FD;&#x6307;&#x5B9A;&#x4E00;&#x4E2A;&#x6570;&#x5B57;&#x503C;&#x3002;</p>
+</blockquote>
+<h2 id="flex">Flex</h2>
+<p>flex &#x5C5E;&#x6027;&#x51B3;&#x5B9A;&#x5143;&#x7D20;&#x5728;&#x4E3B;&#x8F74;&#x4E0A;&#x5982;&#x4F55;&#x586B;&#x6EE1;&#x53EF;&#x7528;&#x533A;&#x57DF;&#x3002;&#x6574;&#x4E2A;&#x533A;&#x57DF;&#x4F1A;&#x6839;&#x636E;&#x6BCF;&#x4E2A;&#x5143;&#x7D20;&#x8BBE;&#x7F6E;&#x7684;flex&#x5C5E;&#x6027;&#x503C;&#x88AB;&#x5206;&#x5272;&#x6210;&#x591A;&#x4E2A;&#x90E8;&#x5206;&#x3002;</p>
+<p>&#x5728;&#x4E0B;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x4E2D;&#xFF0C;&#x5728;&#x8BBE;&#x7F6E;&#x4E86; <code>flex: 1</code> &#x7684;&#x5BB9;&#x5668;view&#x4E2D;&#xFF0C;&#x6709;&#x7EA2;&#x8272;&#xFF0C;&#x9EC4;&#x8272;&#x548C;&#x7EFF;&#x8272;&#x4E09;&#x4E2A;&#x5B50; <code>view</code>&#x3002;&#x7EA2;&#x8272; <code>view</code> &#x8BBE;&#x7F6E;&#x4E86; <code>flex: 1</code>&#xFF0C;&#x9EC4;&#x8272; <code>view</code> &#x8BBE;&#x7F6E;&#x4E86; <code>flex: 2</code>&#xFF0C;&#x7EFF;&#x8272; <code>view</code> &#x8BBE;&#x7F6E;&#x4E86; <code>flex: 3</code>&#x3002;<code>1+2+3 = 6</code>&#xFF0C;&#x8FD9;&#x610F;&#x5473;&#x7740;&#x7EA2;&#x8272; <code>view</code> &#x5360;&#x636E;&#x6574;&#x4E2A;&#x533A;&#x57DF;&#x7684; <code>1/6</code>&#xFF0C;&#x9EC4;&#x8272; <code>view</code> &#x5360;&#x636E;&#x6574;&#x4E2A;&#x533A;&#x57DF;&#x7684; <code>2/6</code>&#xFF0C;&#x7EFF;&#x8272; <code>view</code> &#x5360;&#x636E;&#x6574;&#x4E2A;&#x533A;&#x57DF;&#x7684;<code>3/6</code>&#x3002;</p>
+<h2 id="flex-direction">Flex Direction</h2>
+<p>&#x5728;&#x7EC4;&#x4EF6;&#x7684; style &#x4E2D;&#x6307;&#x5B9A; <code>flexDirection</code> &#x53EF;&#x4EE5;&#x51B3;&#x5B9A;&#x5E03;&#x5C40;&#x7684;&#x4E3B;&#x8F74;&#x3002;&#x5B50;&#x5143;&#x7D20;&#x662F;&#x5E94;&#x8BE5;&#x6CBF;&#x7740;&#x6C34;&#x5E73;&#x8F74; (row) &#x65B9;&#x5411;&#x6392;&#x5217;&#xFF0C;&#x8FD8;&#x662F;&#x6CBF;&#x7740;&#x7AD6;&#x76F4;&#x8F74; (column) &#x65B9;&#x5411;&#x6392;&#x5217;&#x5462;&#xFF1F;&#x9ED8;&#x8BA4;&#x503C;&#x662F;&#x7AD6;&#x76F4;&#x8F74; (column) &#x65B9;&#x5411;&#x3002;</p>
+<pre><code class="lang-js"><span class="hljs-keyword">import</span> React, { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>
+<span class="hljs-keyword">import</span> { View } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react-native&apos;</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FlexDirectionBasics</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
+  render() {
+    <span class="hljs-keyword">return</span> (
+      <span class="hljs-comment">// &#x5C1D;&#x8BD5;&#x628A;`flexDirection`&#x6539;&#x4E3A;`column`&#x770B;&#x770B;</span>
+      &lt;View style={{flex: <span class="hljs-number">1</span>, flexDirection: <span class="hljs-string">&apos;row&apos;</span>}}&gt;
+        &lt;View style={{width: 50, height: 50, backgroundColor: &apos;powderblue&apos;}} /&gt;
+        &lt;View style={{width: 50, height: 50, backgroundColor: &apos;skyblue&apos;}} /&gt;
+        &lt;View style={{width: 50, height: 50, backgroundColor: &apos;steelblue&apos;}} /&gt;
+      &lt;/View&gt;
+    )
+  }
+}
+</code></pre>
+<h2 id="layout-direction">Layout Direction</h2>
+<p>&#x5E03;&#x5C40;&#x65B9;&#x5411;&#x6307;&#x5B9A;&#x5C42;&#x6B21;&#x7ED3;&#x6784;&#x4E2D;&#x7684;&#x5B50;&#x9879;&#x548C;&#x6587;&#x672C;&#x7684;&#x5E03;&#x5C40;&#x65B9;&#x5411;&#x3002;&#x5E03;&#x5C40;&#x65B9;&#x5411;&#x4E5F;&#x4F1A;&#x5F71;&#x54CD;&#x8FB9;&#x8D77;&#x70B9;&#x548C;&#x7EC8;&#x70B9;&#x6240;&#x6307;&#x7684;&#x5BF9;&#x8C61;&#x3002;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;React Native&#x5E03;&#x5C40;&#x4F7F;&#x7528;LTR&#x5E03;&#x5C40;&#x65B9;&#x5411;&#x3002;&#x5728;&#x8FD9;&#x79CD;&#x6A21;&#x5F0F;&#x4E0B;&#xFF0C;&#x5F00;&#x59CB;&#x662F;&#x6307;&#x5DE6;&#x8FB9;&#xFF0C;&#x7ED3;&#x675F;&#x662F;&#x6307;&#x53F3;&#x8FB9;&#x3002;</p>
+<ul>
+<li><p>LTR&#xFF08;&#x9ED8;&#x8BA4;&#x503C;&#xFF09;&#x6587;&#x672C;&#x548C;&#x5B50;&#x7EA7;&#xFF0C;&#x5E76;&#x4ECE;&#x5DE6;&#x5230;&#x53F3;&#x6392;&#x5217;&#x3002;&#x5E94;&#x7528;&#x7684;&#x8FB9;&#x8DDD;&#x548C;&#x586B;&#x5145;&#x5143;&#x7D20;&#x7684;&#x5F00;&#x5934;&#x5E94;&#x7528;&#x4E8E;&#x5DE6;&#x4FA7;&#x3002;</p>
+</li>
+<li><p>&#x4ECE;&#x53F3;&#x5230;&#x5DE6;&#x6392;&#x5217;&#x7684;RTL&#x6587;&#x672C;&#x548C;&#x5B50;&#x9879;&#x3002;&#x5E94;&#x7528;&#x7684;&#x8FB9;&#x8DDD;&#x548C;&#x586B;&#x5145;&#x5143;&#x7D20;&#x7684;&#x5F00;&#x5934;&#x5E94;&#x7528;&#x4E8E;&#x53F3;&#x4FA7;&#x3002;</p>
+</li>
+</ul>
+<h2 id="justify-content">Justify Content</h2>
+<p>&#x5728;&#x7EC4;&#x4EF6;&#x7684; style &#x4E2D;&#x6307;&#x5B9A; justifyContent &#x53EF;&#x4EE5;&#x51B3;&#x5B9A;&#x5176;&#x5B50;&#x5143;&#x7D20;&#x6CBF;&#x7740;&#x4E3B;&#x8F74;&#x7684;&#x6392;&#x5217;&#x65B9;&#x5F0F;&#x3002;&#x5B50;&#x5143;&#x7D20;&#x662F;&#x5E94;&#x8BE5;&#x9760;&#x8FD1;&#x4E3B;&#x8F74;&#x7684;&#x8D77;&#x59CB;&#x7AEF;&#x8FD8;&#x662F;&#x672B;&#x5C3E;&#x6BB5;&#x5206;&#x5E03;&#x5462;&#xFF1F;&#x4EA6;&#x6216;&#x5E94;&#x8BE5;&#x5747;&#x5300;&#x5206;&#x5E03;&#xFF1F;&#x5BF9;&#x5E94;&#x7684;&#x8FD9;&#x4E9B;&#x53EF;&#x9009;&#x9879;&#x6709;&#xFF1A;flex-start&#x3001;center&#x3001;flex-end&#x3001;space-around&#x3001;space-between &#x4EE5;&#x53CA; space-evenly&#x3002;</p>
+<pre><code class="lang-js"><span class="hljs-keyword">import</span> React, { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>
+<span class="hljs-keyword">import</span> { View } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react-native&apos;</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">JustifyContentBasics</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
+  render() {
+    <span class="hljs-keyword">return</span> (
+      <span class="hljs-comment">// &#x5C1D;&#x8BD5;&#x628A;`justifyContent`&#x6539;&#x4E3A;`center`&#x770B;&#x770B;</span>
+      <span class="hljs-comment">// &#x5C1D;&#x8BD5;&#x628A;`flexDirection`&#x6539;&#x4E3A;`row`&#x770B;&#x770B;</span>
+      &lt;View style={{
+        flex: <span class="hljs-number">1</span>,
+        flexDirection: <span class="hljs-string">&apos;column&apos;</span>,
+        justifyContent: <span class="hljs-string">&apos;space-between&apos;</span>,
+      }}&gt;
+        &lt;View style={{width: 50, height: 50, backgroundColor: &apos;powderblue&apos;}} /&gt;
+        &lt;View style={{width: 50, height: 50, backgroundColor: &apos;skyblue&apos;}} /&gt;
+        &lt;View style={{width: 50, height: 50, backgroundColor: &apos;steelblue&apos;}} /&gt;
+      &lt;/View&gt;
+    )
+  }
+}
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="width-and-height.html" class="navigation navigation-prev " aria-label="Previous page: 宽和高">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../thanks/README.md" class="navigation navigation-next " aria-label="Next page: 感谢">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Flexbox布局","level":"1.2.7","depth":2,"next":{"title":"感谢","level":"1.3","depth":1,"path":"thanks/README.md","ref":"thanks/README.md","articles":[]},"previous":{"title":"宽和高","level":"1.2.6","depth":2,"path":"basics/width-and-height.md","ref":"basics/width-and-height.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"basics/layout-with-flexbox.md","mtime":"2020-02-13T06:03:38.977Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-13T06:06:49.926Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
