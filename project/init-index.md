@@ -1,9 +1,9 @@
 # 编写 Index组件 基本结构
 
-在根目录下创建 `pages` 文件夹，在里面创建一个 `index.tsx` 文件，编辑内容：
+在根目录下创建 `pages/index` 文件夹，在里面创建一个 `Index.tsx` 文件，编辑内容：
 
 ```ts
-// pages/index.tsx
+// pages/index/Index.tsx
 import React, { Component } from 'react'
 
 import {
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
 
 ```ts
 import React from 'react'
-import Index from './pages/index'
+import Index from './pages/index/Index'
 
 export default function App() {
   return (

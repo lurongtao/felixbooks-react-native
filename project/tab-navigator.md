@@ -6,108 +6,110 @@
 yarn add react-native-tab-navigator -S
 ```
 
-修改 index.tsx, 引入 tab-navigator 代码：
+## 修改 index.tsx, 引入 tab-navigator 代码：
 
 ```ts
 import React, { Component } from 'react'
-import { TabNavigator } from 'react-native-tab-navigator'
+import TabNavigator from 'react-native-tab-navigator'
 
 import {
   View,
   Text
 } from 'react-native'
 
-import { Img } from './styledIndex.js'
-import styles from './styleIndex.js'
+import {
+  Img
+} from './styled_index'
+import styles from './style_index'
 
 import cookbook from '../../assets/images/cookbook.png'
 import cookbookActive from '../../assets/images/cookbook-active.png'
-import menu from '../../assets/images/menu.png'
-import menuActive from '../../assets/images/menu-active.png'
-import location from '../../assets/images/location.png'
-import locationActive from '../../assets/images/location-active.png'
+import category from '../../assets/images/menu.png'
+import categoryActive from '../../assets/images/menu-active.png'
+import map from '../../assets/images/location.png'
+import mapActive from '../../assets/images/location-active.png'
 import more from '../../assets/images/more.png'
 import moreActive from '../../assets/images/more-active.png'
 
 interface Props {
-  
+
 }
 
 interface State {
   selectedTab: string
 }
 
-export default class Index extends Component<Props, State> {
-  constructor(props) {
+class Index extends Component<Props, State> {
+  constructor(props: Props) {
     super(props)
   }
-  
+
   state: State = {
     selectedTab: 'home'
   }
 
   componentDidMount() {
-    
+
   }
 
   render() {
     return (
-      <View style={ styles.layout }>
-        <TabNavigator style={styles.navigator}>
-          <TabNavigator.Item
-            selected={this.state.selectedTab === 'home'}
-            title="美食平台"
-            selectedTitleStyle={{color: '#000'}}
-            renderIcon={() => <Img source={cookbook} />}
-            renderSelectedIcon={() => <Img source={cookbookActive} />}
-            onPress={() => this.setState({ selectedTab: 'home' })}>
-            <View><Text>美食大全</Text></View>
-          </TabNavigator.Item>
-          <TabNavigator.Item
-            selected={this.state.selectedTab === 'category'}
-            title="热门分类"
-            selectedTitleStyle={{color: '#000'}}
-            renderIcon={() => <Img source={menu} />}
-            renderSelectedIcon={() => <Img source={menuActive} />}
-            onPress={() => this.setState({ selectedTab: 'category' })}>
-            <View><Text>热门分类</Text></View>
-          </TabNavigator.Item>
-
-          <TabNavigator.Item
-            selected={this.state.selectedTab === 'map'}
-            title="地图"
-            selectedTitleStyle={{color: '#000'}}
-            renderIcon={() => <Img source={location} />}
-            renderSelectedIcon={() => <Img source={locationActive} />}
-            onPress={() => this.setState({ selectedTab: 'map' })}>
-            <View><Text>美食地图</Text></View>
-          </TabNavigator.Item>
-          
-          <TabNavigator.Item
-            selected={this.state.selectedTab === 'profile'}
-            title="更多"
-            selectedTitleStyle={{color: '#000'}}
-            renderIcon={() => <Img source={more} />}
-            renderSelectedIcon={() => <Img source={moreActive} />}
-            onPress={() => this.setState({ selectedTab: 'profile' })}>
-            <View><Text>更多</Text></View>
-          </TabNavigator.Item>
-        </TabNavigator>
-      </View>
+      <TabNavigator
+        tabBarStyle={styles.tabBarStyle}
+      >
+        <TabNavigator.Item
+          selected={this.state.selectedTab === 'home'}
+          title="美食大全"
+          titleStyle={styles.titleStyle}
+          selectedTitleStyle={styles.selectedTitleStyle}
+          renderIcon={() => <Img source={cookbook} />}
+          renderSelectedIcon={() => <Img source={cookbookActive} />}
+          onPress={() => this.setState({ selectedTab: 'home' })}
+        >
+          {<View><Text>美食大全</Text></View>}
+        </TabNavigator.Item>
+        <TabNavigator.Item
+          selected={this.state.selectedTab === 'category'}
+          title="分类"
+          titleStyle={styles.titleStyle}
+          selectedTitleStyle={styles.selectedTitleStyle}
+          renderIcon={() => <Img source={category} />}
+          renderSelectedIcon={() => <Img source={categoryActive} />}
+          onPress={() => this.setState({ selectedTab: 'category' })}
+        >
+          {<View><Text>分类</Text></View>}
+        </TabNavigator.Item>
+        <TabNavigator.Item
+          selected={this.state.selectedTab === 'map'}
+          title="地图"
+          titleStyle={styles.titleStyle}
+          selectedTitleStyle={styles.selectedTitleStyle}
+          renderIcon={() => <Img source={map} />}
+          renderSelectedIcon={() => <Img source={mapActive} />}
+          onPress={() => this.setState({ selectedTab: 'map' })}
+        >
+          {<View><Text>地图</Text></View>}
+        </TabNavigator.Item>
+        <TabNavigator.Item
+          selected={this.state.selectedTab === 'more'}
+          title="更多"
+          titleStyle={styles.titleStyle}
+          selectedTitleStyle={styles.selectedTitleStyle}
+          renderIcon={() => <Img source={more} />}
+          renderSelectedIcon={() => <Img source={moreActive} />}
+          onPress={() => this.setState({ selectedTab: 'more' })}
+        >
+          {<View><Text>更多</Text></View>}
+        </TabNavigator.Item>
+      </TabNavigator>
     )
   }
 }
+
+export default Index
 ```
 
 问题：
-
-* 可能遇到和expo版本不兼容，建议用 expo34
-
-```
-yarn add expo@34.0.1 -S
-yarn add react-native-screens@1.0.0-alpha.22
-```
-
 * ts 提示引入的 png 不能识别，飘红了。解决方案是在项目跟目录下创建 `images.d.ts` 文件，内容如下：
 
 ```js
@@ -118,4 +120,64 @@ declare module '*.jpeg'
 declare module '*.gif'
 declare module '*.bmp'
 declare module '*.tiff'
+```
+
+## 在 `pages/index` 下创建样式文件：
+
+* 安装 styled-components 模块，创建 styled_index.js, 内容如下：
+
+```js
+import styled from 'styled-components'
+
+const Img = styled.Image `
+  width: 25px;
+  height: 25px;
+`
+
+export {
+  Img
+}
+```
+
+## 再创建一个样式文件 style_index.js, 内容如下：
+
+```js
+import { StyleSheet } from 'react-native'
+
+export default StyleSheet.create({
+  titleStyle: {
+    color: '#666'
+  },
+  
+  tabBarStyle: {
+    paddingBottom: 34, 
+    height: 80
+  },
+
+  selectedTitleStyle: {
+    color: '#000'
+  }
+})
+```
+
+## tabbar 的兼容处理
+
+安装 expo-device
+
+```
+npm i expo-device -S
+```
+
+修改 index.ts, 根据您设备情况引入不同的样式，此处只是测试性代码，只做了iphone XR 和 其他非 “齐刘海” iPhone 手机：
+
+```js
+// 载入模块
+import * as Device from 'expo-device'
+
+// 在 TabNavigator 上修改 tabBarStyle
+<TabNavigator
+  tabBarStyle={
+    Device.deviceName === 'iPhone Xʀ' ? styles.tabBarStyle : null
+  }
+>
 ```
