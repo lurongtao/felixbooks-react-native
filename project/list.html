@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>3、引入tabbar导航器 · GitBook</title>
+        <title>10、创建List组件 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="antd-mobile-rn.html" />
+    <link rel="next" href="react-navigation.html" />
     
     
-    <link rel="prev" href="init-index.html" />
+    <link rel="prev" href="home-swiper-store.html" />
     
 
     </head>
@@ -278,7 +278,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3.3" data-path="tab-navigator.html">
+        <li class="chapter " data-level="1.3.3" data-path="tab-navigator.html">
             
                 <a href="tab-navigator.html">
             
@@ -369,7 +369,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.10" data-path="list.html">
+        <li class="chapter active" data-level="1.3.10" data-path="list.html">
             
                 <a href="list.html">
             
@@ -443,7 +443,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >3、引入tabbar导航器</a>
+        <a href=".." >10、创建List组件</a>
     </h1>
 </div>
 
@@ -458,167 +458,183 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x5F15;&#x5165;-react-native-tab-navigator">&#x5F15;&#x5165; react-native-tab-navigator</h1>
-<p>&#x5728;&#x9879;&#x76EE;&#x73AF;&#x5883;&#x547D;&#x4EE4;&#x884C;&#x91CC;&#x5B89;&#x88C5; tabbar &#x5BFC;&#x822A;&#x5668;&#xFF0C;&#x8BE6;&#x7EC6;&#x5185;&#x5BB9;&#x53EF;&#x53C2;&#x89C1; <a href="https://github.com/ptomasroos/react-native-tab-navigator" target="_blank">react-native-tab-navigator</a> &#x5B98;&#x7F51;</p>
-<pre><code>yarn add react-native-tab-navigator -S
-</code></pre><h2 id="&#x4FEE;&#x6539;-indextsx-&#x5F15;&#x5165;-tab-navigator-&#x4EE3;&#x7801;&#xFF1A;">&#x4FEE;&#x6539; index.tsx, &#x5F15;&#x5165; tab-navigator &#x4EE3;&#x7801;&#xFF1A;</h2>
-<pre><code class="lang-ts">import React, { Component } from &apos;react&apos;
-import TabNavigator from &apos;react-native-tab-navigator&apos;
+                                <h1 id="&#x6784;&#x5EFA;-listtsx-&#x7EC4;&#x4EF6;">&#x6784;&#x5EFA; List.tsx &#x7EC4;&#x4EF6;</h1>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x6784;&#x5EFA;&#x53E6;&#x4E00;&#x4E2A;&#x9875;&#x9762;&#xFF0C;&#x9996;&#x5148;&#x5728; pages &#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA; list &#x6587;&#x4EF6;&#x5939;&#xFF0C;&#x5728;&#x6B64;&#x6587;&#x4EF6;&#x5939;&#x91CC;&#x521B;&#x5EFA; List.tsx &#x7EC4;&#x4EF6;&#x6587;&#x4EF6;&#x548C; style_list.js &#x6837;&#x5F0F;&#x6587;&#x4EF6;&#x3002;</p>
+<h2 id="listtsx">List.tsx</h2>
+<pre><code class="lang-js"><span class="hljs-comment">// pages/list/List</span>
+<span class="hljs-keyword">import</span> React, { Component, createRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>
 
-import {
+<span class="hljs-keyword">import</span> {
+  inject,
+  observer
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;mobx-react&apos;</span>
+
+<span class="hljs-keyword">import</span> {
   View,
-  Text
-} from &apos;react-native&apos;
+  Text,
+  Image,
+  FlatList
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react-native&apos;</span>
 
-import {
-  Img
-} from &apos;./styled_index&apos;
-import styles from &apos;./style_index&apos;
-
-import cookbook from &apos;../../assets/images/cookbook.png&apos;
-import cookbookActive from &apos;../../assets/images/cookbook-active.png&apos;
-import category from &apos;../../assets/images/menu.png&apos;
-import categoryActive from &apos;../../assets/images/menu-active.png&apos;
-import map from &apos;../../assets/images/location.png&apos;
-import mapActive from &apos;../../assets/images/location-active.png&apos;
-import more from &apos;../../assets/images/more.png&apos;
-import moreActive from &apos;../../assets/images/more-active.png&apos;
+<span class="hljs-keyword">import</span> styles <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./style_list&apos;</span>
 
 interface Props {
-
+  store?: any
 }
 
 interface State {
-  selectedTab: string
+  <span class="hljs-comment">// &#x8BB0;&#x5F55;&#x4E0A;&#x62C9;&#x52A0;&#x8F7D;&#x66F4;&#x591A;&#x7684;&#x5F53;&#x524D;&#x9875;&#x7801;</span>
+  curPage: number, 
+
+  <span class="hljs-comment">// &#x9875;&#x9762;&#x663E;&#x793A;&#x7684;&#x6570;&#x636E;</span>
+  datalist: <span class="hljs-built_in">Array</span>&lt;object&gt;, 
+
+  <span class="hljs-comment">// &#x63A7;&#x5236;&#x4E0B;&#x62C9;&#x5237;&#x65B0;&#x7684;&#x5F00;&#x5173;</span>
+  refresh: boolean 
 }
 
-class Index extends Component&lt;Props, State&gt; {
-  constructor(props: Props) {
-    super(props)
+<span class="hljs-keyword">let</span> pageSize = <span class="hljs-number">10</span>
+
+@inject(<span class="hljs-string">&apos;store&apos;</span>)
+@observer
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">List</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span>&lt;<span class="hljs-title">Props</span>, <span class="hljs-title">State</span>&gt; </span>{
+  <span class="hljs-keyword">constructor</span> (
+    public props: Props, 
+    public flatlist,
+  ) {
+    <span class="hljs-keyword">super</span>(props)
+    <span class="hljs-keyword">this</span>.flatlist = createRef()
   }
 
-  state: State = {
-    selectedTab: &apos;home&apos;
+  state = {
+    curPage: <span class="hljs-number">1</span>,
+    datalist: [],
+    refresh: <span class="hljs-literal">false</span>
   }
 
+  <span class="hljs-comment">// &#x6E32;&#x67D3; Flatlist &#x7EC4;&#x4EF6;&#x6570;&#x636E;</span>
+  _renderItem(item) {
+    <span class="hljs-keyword">let</span> {img, name, burdens, all_click, favorites} = item.item.data   
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">View</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{styles.listWrap}</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">View</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{styles.imgWrap}</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">Image</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{styles.image}</span> <span class="hljs-attr">source</span>=<span class="hljs-string">{{uri:</span> <span class="hljs-attr">img</span>}}&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">Image</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">View</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">View</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{styles.descWrap}</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">Text</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{styles.title}</span>&gt;</span>{name}<span class="hljs-tag">&lt;/<span class="hljs-name">Text</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">Text</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{styles.subtitle}</span> <span class="hljs-attr">numberOfLines</span>=<span class="hljs-string">{1}</span>&gt;</span>{burdens}<span class="hljs-tag">&lt;/<span class="hljs-name">Text</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">Text</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{styles.desc}</span>&gt;</span>{all_click} {favorites}<span class="hljs-tag">&lt;/<span class="hljs-name">Text</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">View</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">View</span>&gt;</span></span>
+    )
+  }
+
+  <span class="hljs-comment">// &#x5904;&#x7406;&#x7528;&#x6237;&#x62C9;&#x5230;&#x5E95;&#x7AEF;&#x7684;&#x54CD;&#x5E94;&#x51FD;&#x6570;</span>
+  _handleReachEnd() {
+    <span class="hljs-comment">// &#x5982;&#x679C;&#x8FD8;&#x6709;&#x6570;&#x636E;&#xFF0C;&#x4E00;&#x76F4;&#x52A0;&#x8F7D;</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.state.curPage &lt; <span class="hljs-built_in">Math</span>.ceil(<span class="hljs-keyword">this</span>.props.store.list.length / pageSize)) {
+      <span class="hljs-keyword">this</span>.setState((state) =&gt; {
+        <span class="hljs-keyword">return</span> {
+          curPage: state.curPage + <span class="hljs-number">1</span>
+        }
+      }, () =&gt; {
+        <span class="hljs-keyword">this</span>._loadData()
+      })
+    }
+  }
+
+  <span class="hljs-comment">// &#x4E0B;&#x62C9;&#x5237;&#x65B0;&#x7684;&#x54CD;&#x5E94;&#x51FD;&#x6570;</span>
+  _handleRefresh() {
+    <span class="hljs-keyword">this</span>.setState({
+      refresh: <span class="hljs-literal">true</span>
+    })
+
+    <span class="hljs-comment">// &#x6B64;&#x5904;&#x53EF;&#x4EE5;&#x5F02;&#x6B65;&#x83B7;&#x53D6;&#x540E;&#x7AEF;&#x63A5;&#x53E3;&#x6570;&#x636E;&#xFF0C;&#x5177;&#x4F53;&#x5B9E;&#x73B0;&#x601D;&#x8DEF;&#x89C1;&#x4E0A;&#x62C9;&#x52A0;&#x8F7D;&#x3002;</span>
+    setTimeout(() =&gt; {
+      <span class="hljs-keyword">this</span>.setState({
+        refresh: <span class="hljs-literal">false</span>
+      })
+    }, <span class="hljs-number">2000</span>)
+  }
+
+  <span class="hljs-comment">// &#x52A0;&#x8F7D;&#x6570;&#x636E;</span>
+  _loadData() {
+    <span class="hljs-keyword">let</span> data = <span class="hljs-keyword">this</span>.props.store.list.slice(<span class="hljs-number">0</span>, <span class="hljs-keyword">this</span>.state.curPage * pageSize)    
+    <span class="hljs-keyword">let</span> flatListData = data.map((value, index) =&gt; ({
+        data: value,
+        key: value.id
+      })
+    )
+    <span class="hljs-keyword">this</span>.setState({
+      datalist: flatListData
+    })
+  }
+
+  <span class="hljs-comment">// &#x6267;&#x884C;&#x7B2C;&#x4E00;&#x6B21;&#x6570;&#x636E;&#x52A0;&#x8F7D;</span>
   componentDidMount() {
-
+    setTimeout((params) =&gt; {
+      <span class="hljs-keyword">this</span>._loadData()
+    }, <span class="hljs-number">0</span>)
   }
 
   render() {
-    return (
-      &lt;TabNavigator
-        tabBarStyle={styles.tabBarStyle}
-      &gt;
-        &lt;TabNavigator.Item
-          selected={this.state.selectedTab === &apos;home&apos;}
-          title=&quot;&#x7F8E;&#x98DF;&#x5927;&#x5168;&quot;
-          titleStyle={styles.titleStyle}
-          selectedTitleStyle={styles.selectedTitleStyle}
-          renderIcon={() =&gt; &lt;Img source={cookbook} /&gt;}
-          renderSelectedIcon={() =&gt; &lt;Img source={cookbookActive} /&gt;}
-          onPress={() =&gt; this.setState({ selectedTab: &apos;home&apos; })}
-        &gt;
-          {&lt;View&gt;&lt;Text&gt;&#x7F8E;&#x98DF;&#x5927;&#x5168;&lt;/Text&gt;&lt;/View&gt;}
-        &lt;/TabNavigator.Item&gt;
-        &lt;TabNavigator.Item
-          selected={this.state.selectedTab === &apos;category&apos;}
-          title=&quot;&#x5206;&#x7C7B;&quot;
-          titleStyle={styles.titleStyle}
-          selectedTitleStyle={styles.selectedTitleStyle}
-          renderIcon={() =&gt; &lt;Img source={category} /&gt;}
-          renderSelectedIcon={() =&gt; &lt;Img source={categoryActive} /&gt;}
-          onPress={() =&gt; this.setState({ selectedTab: &apos;category&apos; })}
-        &gt;
-          {&lt;View&gt;&lt;Text&gt;&#x5206;&#x7C7B;&lt;/Text&gt;&lt;/View&gt;}
-        &lt;/TabNavigator.Item&gt;
-        &lt;TabNavigator.Item
-          selected={this.state.selectedTab === &apos;map&apos;}
-          title=&quot;&#x5730;&#x56FE;&quot;
-          titleStyle={styles.titleStyle}
-          selectedTitleStyle={styles.selectedTitleStyle}
-          renderIcon={() =&gt; &lt;Img source={map} /&gt;}
-          renderSelectedIcon={() =&gt; &lt;Img source={mapActive} /&gt;}
-          onPress={() =&gt; this.setState({ selectedTab: &apos;map&apos; })}
-        &gt;
-          {&lt;View&gt;&lt;Text&gt;&#x5730;&#x56FE;&lt;/Text&gt;&lt;/View&gt;}
-        &lt;/TabNavigator.Item&gt;
-        &lt;TabNavigator.Item
-          selected={this.state.selectedTab === &apos;more&apos;}
-          title=&quot;&#x66F4;&#x591A;&quot;
-          titleStyle={styles.titleStyle}
-          selectedTitleStyle={styles.selectedTitleStyle}
-          renderIcon={() =&gt; &lt;Img source={more} /&gt;}
-          renderSelectedIcon={() =&gt; &lt;Img source={moreActive} /&gt;}
-          onPress={() =&gt; this.setState({ selectedTab: &apos;more&apos; })}
-        &gt;
-          {&lt;View&gt;&lt;Text&gt;&#x66F4;&#x591A;&lt;/Text&gt;&lt;/View&gt;}
-        &lt;/TabNavigator.Item&gt;
-      &lt;/TabNavigator&gt;
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">FlatList</span>
+        <span class="hljs-attr">ref</span>=<span class="hljs-string">{this.flatlist}</span>
+        <span class="hljs-attr">renderItem</span>=<span class="hljs-string">{this._renderItem.bind(this)}</span>
+        <span class="hljs-attr">data</span>=<span class="hljs-string">{this.state.datalist}</span>
+        <span class="hljs-attr">refreshing</span>=<span class="hljs-string">{this.state.refresh}</span>
+        <span class="hljs-attr">onEndReached</span>=<span class="hljs-string">{this._handleReachEnd.bind(this)}</span>
+        <span class="hljs-attr">onEndReachedThreshold</span>=<span class="hljs-string">{1}</span>
+        <span class="hljs-attr">onRefresh</span>=<span class="hljs-string">{this._handleRefresh.bind(this)}</span>
+      &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">FlatList</span>&gt;</span></span>
     )
   }
 }
-
-export default Index
 </code></pre>
-<p>&#x95EE;&#x9898;&#xFF1A;</p>
-<ul>
-<li>ts &#x63D0;&#x793A;&#x5F15;&#x5165;&#x7684; png &#x4E0D;&#x80FD;&#x8BC6;&#x522B;&#xFF0C;&#x98D8;&#x7EA2;&#x4E86;&#x3002;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x662F;&#x5728;&#x9879;&#x76EE;&#x8DDF;&#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA; <code>images.d.ts</code> &#x6587;&#x4EF6;&#xFF0C;&#x5185;&#x5BB9;&#x5982;&#x4E0B;&#xFF1A;</li>
-</ul>
-<pre><code class="lang-js">declare <span class="hljs-built_in">module</span> <span class="hljs-string">&apos;*.svg&apos;</span>
-declare <span class="hljs-built_in">module</span> <span class="hljs-string">&apos;*.png&apos;</span>
-declare <span class="hljs-built_in">module</span> <span class="hljs-string">&apos;*.jpg&apos;</span>
-declare <span class="hljs-built_in">module</span> <span class="hljs-string">&apos;*.jpeg&apos;</span>
-declare <span class="hljs-built_in">module</span> <span class="hljs-string">&apos;*.gif&apos;</span>
-declare <span class="hljs-built_in">module</span> <span class="hljs-string">&apos;*.bmp&apos;</span>
-declare <span class="hljs-built_in">module</span> <span class="hljs-string">&apos;*.tiff&apos;</span>
-</code></pre>
-<h2 id="&#x5728;-pagesindex-&#x4E0B;&#x521B;&#x5EFA;&#x6837;&#x5F0F;&#x6587;&#x4EF6;&#xFF1A;">&#x5728; <code>pages/index</code> &#x4E0B;&#x521B;&#x5EFA;&#x6837;&#x5F0F;&#x6587;&#x4EF6;&#xFF1A;</h2>
-<ul>
-<li>&#x5B89;&#x88C5; styled-components &#x6A21;&#x5757;&#xFF0C;&#x521B;&#x5EFA; styled_index.js, &#x5185;&#x5BB9;&#x5982;&#x4E0B;&#xFF1A;</li>
-</ul>
-<pre><code class="lang-js"><span class="hljs-keyword">import</span> styled <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;styled-components&apos;</span>
-
-<span class="hljs-keyword">const</span> Img = styled.Image <span class="hljs-string">`
-  width: 25px;
-  height: 25px;
-`</span>
-
-<span class="hljs-keyword">export</span> {
-  Img
-}
-</code></pre>
-<h2 id="&#x518D;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x6837;&#x5F0F;&#x6587;&#x4EF6;-styleindexjs-&#x5185;&#x5BB9;&#x5982;&#x4E0B;&#xFF1A;">&#x518D;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x6837;&#x5F0F;&#x6587;&#x4EF6; style_index.js, &#x5185;&#x5BB9;&#x5982;&#x4E0B;&#xFF1A;</h2>
+<h2 id="stylelistjs-&#x6837;&#x5F0F;">style_list.js &#x6837;&#x5F0F;</h2>
 <pre><code class="lang-js"><span class="hljs-keyword">import</span> { StyleSheet } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react-native&apos;</span>
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> StyleSheet.create({
-  titleStyle: {
+  listWrap: {
+    flexDirection: <span class="hljs-string">&apos;row&apos;</span>,
+    padding: <span class="hljs-number">10</span>,
+    borderBottomWidth: <span class="hljs-number">1</span>,
+    borderStyle: <span class="hljs-string">&apos;solid&apos;</span>,
+    borderBottomColor: <span class="hljs-string">&apos;#eee&apos;</span>
+  },
+
+  imgWrap: {
+    width: <span class="hljs-number">135</span>,
+    paddingRight: <span class="hljs-number">10</span>
+  },
+
+  image: {
+    width: <span class="hljs-number">115</span>,
+    height: <span class="hljs-number">75</span>
+  },
+
+  descWrap: {
+    flex: <span class="hljs-number">1</span>
+  },
+
+  title: {
+    fontSize: <span class="hljs-number">20</span>,
+    lineHeight: <span class="hljs-number">30</span>
+  },
+
+  subtitle: {
+    fontSize: <span class="hljs-number">16</span>,
+    color: <span class="hljs-string">&apos;#666&apos;</span>,
+    lineHeight: <span class="hljs-number">30</span>,
+    overflow: <span class="hljs-string">&apos;hidden&apos;</span>
+  },
+
+  desc: {
+    fontSize: <span class="hljs-number">12</span>,
     color: <span class="hljs-string">&apos;#666&apos;</span>
-  },
-
-  tabBarStyle: {
-    paddingBottom: <span class="hljs-number">34</span>, 
-    height: <span class="hljs-number">80</span>
-  },
-
-  selectedTitleStyle: {
-    color: <span class="hljs-string">&apos;#000&apos;</span>
   }
 })
-</code></pre>
-<h2 id="tabbar-&#x7684;&#x517C;&#x5BB9;&#x5904;&#x7406;">tabbar &#x7684;&#x517C;&#x5BB9;&#x5904;&#x7406;</h2>
-<p>&#x5B89;&#x88C5; expo-device</p>
-<pre><code>npm i expo-device -S
-</code></pre><p>&#x4FEE;&#x6539; index.ts, &#x6839;&#x636E;&#x60A8;&#x8BBE;&#x5907;&#x60C5;&#x51B5;&#x5F15;&#x5165;&#x4E0D;&#x540C;&#x7684;&#x6837;&#x5F0F;&#xFF0C;&#x6B64;&#x5904;&#x53EA;&#x662F;&#x6D4B;&#x8BD5;&#x6027;&#x4EE3;&#x7801;&#xFF0C;&#x53EA;&#x505A;&#x4E86;iphone XR &#x548C; &#x5176;&#x4ED6;&#x975E; &#x201C;&#x9F50;&#x5218;&#x6D77;&#x201D; iPhone &#x624B;&#x673A;&#xFF1A;</p>
-<pre><code class="lang-js"><span class="hljs-comment">// &#x8F7D;&#x5165;&#x6A21;&#x5757;</span>
-<span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> Device <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;expo-device&apos;</span>
-
-<span class="hljs-comment">// &#x5728; TabNavigator &#x4E0A;&#x4FEE;&#x6539; tabBarStyle</span>
-&lt;TabNavigator
-  tabBarStyle={
-    Device.deviceName === <span class="hljs-string">&apos;iPhone X&#x280;&apos;</span> ? styles.tabBarStyle : <span class="hljs-literal">null</span>
-  }
-&gt;
 </code></pre>
 
                                 
@@ -647,12 +663,12 @@ declare <span class="hljs-built_in">module</span> <span class="hljs-string">&apo
 
             
                 
-                <a href="init-index.html" class="navigation navigation-prev " aria-label="Previous page: 2、Index组件初始化">
+                <a href="home-swiper-store.html" class="navigation navigation-prev " aria-label="Previous page: 9、更改Swiper和Home组件">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="antd-mobile-rn.html" class="navigation navigation-next " aria-label="Next page: 4、搭建antd-mobile-rn环境">
+                <a href="react-navigation.html" class="navigation navigation-next " aria-label="Next page: 11、react-navigation">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -663,7 +679,7 @@ declare <span class="hljs-built_in">module</span> <span class="hljs-string">&apo
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"3、引入tabbar导航器","level":"1.3.3","depth":2,"next":{"title":"4、搭建antd-mobile-rn环境","level":"1.3.4","depth":2,"path":"project/antd-mobile-rn.md","ref":"project/antd-mobile-rn.md","articles":[]},"previous":{"title":"2、Index组件初始化","level":"1.3.2","depth":2,"path":"project/init-index.md","ref":"project/init-index.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"project/tab-navigator.md","mtime":"2020-02-14T05:19:43.545Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-15T12:55:27.080Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"10、创建List组件","level":"1.3.10","depth":2,"next":{"title":"11、react-navigation","level":"1.3.11","depth":2,"path":"project/react-navigation.md","ref":"project/react-navigation.md","articles":[]},"previous":{"title":"9、更改Swiper和Home组件","level":"1.3.9","depth":2,"path":"project/home-swiper-store.md","ref":"project/home-swiper-store.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"project/list.md","mtime":"2020-02-15T06:46:29.236Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-15T12:55:27.080Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

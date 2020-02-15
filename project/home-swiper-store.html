@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>2、Index组件初始化 · GitBook</title>
+        <title>9、更改Swiper和Home组件 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="tab-navigator.html" />
+    <link rel="next" href="list.html" />
     
     
-    <link rel="prev" href="getting-started.html" />
+    <link rel="prev" href="home-top10.html" />
     
 
     </head>
@@ -265,7 +265,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3.2" data-path="init-index.html">
+        <li class="chapter " data-level="1.3.2" data-path="init-index.html">
             
                 <a href="init-index.html">
             
@@ -356,7 +356,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.9" data-path="home-swiper-store.html">
+        <li class="chapter active" data-level="1.3.9" data-path="home-swiper-store.html">
             
                 <a href="home-swiper-store.html">
             
@@ -443,7 +443,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >2、Index组件初始化</a>
+        <a href=".." >9、更改Swiper和Home组件</a>
     </h1>
 </div>
 
@@ -458,16 +458,84 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x7F16;&#x5199;-index&#x7EC4;&#x4EF6;-&#x57FA;&#x672C;&#x7ED3;&#x6784;">&#x7F16;&#x5199; Index&#x7EC4;&#x4EF6; &#x57FA;&#x672C;&#x7ED3;&#x6784;</h1>
-<p>&#x5728;&#x6839;&#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA; <code>pages/index</code> &#x6587;&#x4EF6;&#x5939;&#xFF0C;&#x5728;&#x91CC;&#x9762;&#x521B;&#x5EFA;&#x4E00;&#x4E2A; <code>Index.tsx</code> &#x6587;&#x4EF6;&#xFF0C;&#x7F16;&#x8F91;&#x5185;&#x5BB9;&#xFF1A;</p>
-<pre><code class="lang-ts">// pages/index/Index.tsx
+                                <h1 id="&#x6539;&#x9020;-swipertsx-&#x7EC4;&#x4EF6;">&#x6539;&#x9020; Swiper.tsx &#x7EC4;&#x4EF6;</h1>
+<p>Swiper &#x7EC4;&#x4EF6;&#x548C; Top10 &#x7EC4;&#x4EF6;&#x5171;&#x4EAB;&#x4E86;&#x6570;&#x636E;&#xFF0C;&#x56E0;&#x6B64;&#x5728; store &#x6784;&#x5EFA;&#x597D;&#x540E;&#xFF0C;&#x9700;&#x8981;&#x6539;&#x9020;&#x4E00;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-ts">// pages/home/Swiper.tsx
 import React, { Component } from &apos;react&apos;
+import { Carousel } from &apos;@ant-design/react-native&apos;
+import { get } from &apos;../../utils/http&apos;
+
+import { observer, inject } from &apos;mobx-react&apos;
 
 import {
   View,
-  Text,
-  StyleSheet
+  Image
 } from &apos;react-native&apos;
+
+import styles from &apos;./style_home&apos;
+
+interface Props {
+  // store &#x4F5C;&#x4E3A;&#x7EC4;&#x4EF6;&#x7684; props
+  store?: any
+}
+
+interface State {
+
+}
+
+// &#x6CE8;&#x5165; store &#x4E0E; &#x5C06;&#x7C7B;&#x53D8;&#x4E3A;&#x53EF;&#x89C2;&#x5BDF;&#x7684;&#x5BF9;&#x8C61;
+@inject(&apos;store&apos;)
+@observer
+class Swiper extends Component&lt;Props, State&gt; {
+  state = {
+    list: []
+  }
+  async componentDidMount() {
+    let list = await get(&apos;http://localhost:9000/api/swiper&apos;)
+    this.props.store.setList(list)
+  }
+
+  render() {
+    return (
+      &lt;Carousel
+        style={styles.wrapper}
+        selectedIndex={0}
+        autoplay
+        infinite
+      &gt;
+        {
+          this.props.store.swiper.map((value, index) =&gt; {
+            return (
+              &lt;View
+                style={styles.containerHorizontal}
+                key={value.id}
+              &gt;
+                &lt;Image
+                  source={{uri: value.img}}
+                  style={styles.slideImg}
+                  resizeMode=&apos;cover&apos;
+                &gt;&lt;/Image&gt;
+              &lt;/View&gt;
+            )
+          })
+        }
+      &lt;/Carousel&gt;
+    )
+  }
+}
+
+export default Swiper
+</code></pre>
+<h1 id="&#x6539;&#x9020;-hometsx-&#x7EC4;&#x4EF6;">&#x6539;&#x9020; Home.tsx &#x7EC4;&#x4EF6;</h1>
+<p>&#x5728; Home.tsx &#x7EC4;&#x4EF6;&#x5F15;&#x5165; Top10 &#x7EC4;&#x4EF6;&#xFF0C;&#x540C;&#x65F6;&#x6DFB;&#x52A0; ScrollView &#x7EC4;&#x4EF6;&#xFF0C;&#x5B9E;&#x73B0;&#x9875;&#x9762;&#x6EDA;&#x52A8;&#x6548;&#x679C;&#x3002;</p>
+<pre><code class="lang-js"><span class="hljs-comment">// page/home/Home.tsx</span>
+
+<span class="hljs-keyword">import</span> React, { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>
+<span class="hljs-keyword">import</span> { ScrollView } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react-native&apos;</span>
+
+<span class="hljs-keyword">import</span> Swiper <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./Swiper&apos;</span>
+<span class="hljs-keyword">import</span> HotCate <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./HotCate&apos;</span>
+<span class="hljs-keyword">import</span> Top10 <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./Top10&apos;</span>
 
 interface Props {
 
@@ -477,48 +545,19 @@ interface State {
 
 }
 
-export default class Index extends Component&lt;Props, State&gt; {
-  constructor(props) {
-    super(props)
-  }
-
-  state: State = {
-
-  }
-
-  componentDidMount() {
-
-  }
-
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Home</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span>&lt;<span class="hljs-title">Props</span>, <span class="hljs-title">State</span>&gt; </span>{
   render() {
-    return (
-      &lt;View style={styles.container}&gt;
-        &lt;Text&gt;
-          Index &#x7EC4;&#x4EF6;&#x5185;&#x5BB9;
-        &lt;/Text&gt;
-      &lt;/View&gt;
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">ScrollView</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">Swiper</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">Swiper</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">HotCate</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">HotCate</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">Top10</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">Top10</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">ScrollView</span>&gt;</span></span>
     )
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: &apos;#fff&apos;,
-    alignItems: &apos;center&apos;,
-    justifyContent: &apos;center&apos;,
-  },
-})
-</code></pre>
-<p>&#x4FEE;&#x6539;&#x6839;&#x76EE;&#x5F55;&#x4E0B;&#x7684; <code>App.tsx</code>&#xFF1A;</p>
-<pre><code class="lang-ts">import React from &apos;react&apos;
-import Index from &apos;./pages/index/Index&apos;
-
-export default function App() {
-  return (
-    &lt;Index&gt;&lt;/Index&gt;
-  )
-}
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> Home
 </code></pre>
 
                                 
@@ -547,12 +586,12 @@ export default function App() {
 
             
                 
-                <a href="getting-started.html" class="navigation navigation-prev " aria-label="Previous page: 1、环境搭建">
+                <a href="home-top10.html" class="navigation navigation-prev " aria-label="Previous page: 8、创建Top10组件">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="tab-navigator.html" class="navigation navigation-next " aria-label="Next page: 3、引入tabbar导航器">
+                <a href="list.html" class="navigation navigation-next " aria-label="Next page: 10、创建List组件">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -563,7 +602,7 @@ export default function App() {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"2、Index组件初始化","level":"1.3.2","depth":2,"next":{"title":"3、引入tabbar导航器","level":"1.3.3","depth":2,"path":"project/tab-navigator.md","ref":"project/tab-navigator.md","articles":[]},"previous":{"title":"1、环境搭建","level":"1.3.1","depth":2,"path":"project/getting-started.md","ref":"project/getting-started.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"project/init-index.md","mtime":"2020-02-14T04:47:56.768Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-15T12:55:27.080Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"9、更改Swiper和Home组件","level":"1.3.9","depth":2,"next":{"title":"10、创建List组件","level":"1.3.10","depth":2,"path":"project/list.md","ref":"project/list.md","articles":[]},"previous":{"title":"8、创建Top10组件","level":"1.3.8","depth":2,"path":"project/home-top10.md","ref":"project/home-top10.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"project/home-swiper-store.md","mtime":"2020-02-15T02:32:21.984Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-15T12:55:27.080Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

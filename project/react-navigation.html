@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>2、Index组件初始化 · GitBook</title>
+        <title>11、react-navigation · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="tab-navigator.html" />
+    <link rel="next" href="../thanks/README.md" />
     
     
-    <link rel="prev" href="getting-started.html" />
+    <link rel="prev" href="list.html" />
     
 
     </head>
@@ -265,7 +265,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3.2" data-path="init-index.html">
+        <li class="chapter " data-level="1.3.2" data-path="init-index.html">
             
                 <a href="init-index.html">
             
@@ -382,7 +382,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.11" data-path="react-navigation.html">
+        <li class="chapter active" data-level="1.3.11" data-path="react-navigation.html">
             
                 <a href="react-navigation.html">
             
@@ -443,7 +443,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >2、Index组件初始化</a>
+        <a href=".." >11、react-navigation</a>
     </h1>
 </div>
 
@@ -458,68 +458,19 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x7F16;&#x5199;-index&#x7EC4;&#x4EF6;-&#x57FA;&#x672C;&#x7ED3;&#x6784;">&#x7F16;&#x5199; Index&#x7EC4;&#x4EF6; &#x57FA;&#x672C;&#x7ED3;&#x6784;</h1>
-<p>&#x5728;&#x6839;&#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA; <code>pages/index</code> &#x6587;&#x4EF6;&#x5939;&#xFF0C;&#x5728;&#x91CC;&#x9762;&#x521B;&#x5EFA;&#x4E00;&#x4E2A; <code>Index.tsx</code> &#x6587;&#x4EF6;&#xFF0C;&#x7F16;&#x8F91;&#x5185;&#x5BB9;&#xFF1A;</p>
-<pre><code class="lang-ts">// pages/index/Index.tsx
-import React, { Component } from &apos;react&apos;
-
-import {
-  View,
-  Text,
-  StyleSheet
-} from &apos;react-native&apos;
-
-interface Props {
-
-}
-
-interface State {
-
-}
-
-export default class Index extends Component&lt;Props, State&gt; {
-  constructor(props) {
-    super(props)
-  }
-
-  state: State = {
-
-  }
-
-  componentDidMount() {
-
-  }
-
-  render() {
-    return (
-      &lt;View style={styles.container}&gt;
-        &lt;Text&gt;
-          Index &#x7EC4;&#x4EF6;&#x5185;&#x5BB9;
-        &lt;/Text&gt;
-      &lt;/View&gt;
-    )
-  }
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: &apos;#fff&apos;,
-    alignItems: &apos;center&apos;,
-    justifyContent: &apos;center&apos;,
-  },
-})
-</code></pre>
-<p>&#x4FEE;&#x6539;&#x6839;&#x76EE;&#x5F55;&#x4E0B;&#x7684; <code>App.tsx</code>&#xFF1A;</p>
-<pre><code class="lang-ts">import React from &apos;react&apos;
-import Index from &apos;./pages/index/Index&apos;
-
-export default function App() {
-  return (
-    &lt;Index&gt;&lt;/Index&gt;
-  )
-}
-</code></pre>
+                                <h1 id="react-navigation-&#x5BFC;&#x822A;&#x7CFB;&#x7EDF;">React Navigation &#x5BFC;&#x822A;&#x7CFB;&#x7EDF;</h1>
+<p>React Navigation&#xFF0C;&#x662F;&#x4E13;&#x95E8;&#x4E3A; React Native &#x7684;&#x5E94;&#x7528;&#x6253;&#x9020;&#x7684;&#x8DEF;&#x7531;&#x548C;&#x5BFC;&#x822A;&#x7CFB;&#x7EDF;&#x3002;</p>
+<h2 id="&#x7279;&#x70B9;">&#x7279;&#x70B9;</h2>
+<h4 id="&#x4F7F;&#x7528;&#x7B80;&#x5355;">&#x4F7F;&#x7528;&#x7B80;&#x5355;</h4>
+<p>&#x5F00;&#x7BB1;&#x5373;&#x7528;&#xFF0C;&#x4F53;&#x9A8C;&#x8D85;&#x597D;&#x7684;&#x5185;&#x7F6E;&#x5BFC;&#x822A;&#x5668;&#x3002;</p>
+<h4 id="&#x4E3A;ios&#x548C;android&#x6784;&#x5EFA;&#x7684;&#x7EC4;&#x4EF6;">&#x4E3A;iOS&#x548C;Android&#x6784;&#x5EFA;&#x7684;&#x7EC4;&#x4EF6;</h4>
+<p>&#x517C;&#x5BB9;iOS &#x548C; Android &#x5E73;&#x53F0;&#xFF0C;&#x6839;&#x636E;&#x7279;&#x5B9A;&#x7684;&#x5E73;&#x53F0;&#xFF0C;&#x6253;&#x9020;&#x5916;&#x89C2;&#x548C;&#x611F;&#x89C9;&#x4E0E;&#x5E73;&#x6ED1;&#x7684;&#x52A8;&#x753B;&#x548C;&#x624B;&#x52BF;&#x3002;</p>
+<h4 id="&#x5B8C;&#x5168;&#x53EF;&#x5B9A;&#x5236;">&#x5B8C;&#x5168;&#x53EF;&#x5B9A;&#x5236;</h4>
+<p>&#x5982;&#x679C;&#x4F60;&#x77E5;&#x9053;&#x5982;&#x4F55;&#x4F7F;&#x7528;JavaScript&#x7F16;&#x5199;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#xFF0C;&#x5219;&#x53EF;&#x4EE5;&#x81EA;&#x5B9A;&#x4E49;React&#x5BFC;&#x822A;&#x7684;&#x4EFB;&#x4F55;&#x90E8;&#x5206;&#x3002;</p>
+<h4 id="&#x5E73;&#x53F0;&#x6269;&#x5C55;&#x7279;&#x6027;">&#x5E73;&#x53F0;&#x6269;&#x5C55;&#x7279;&#x6027;</h4>
+<p>React Navigation &#x5728;&#x6BCF;&#x4E00;&#x5C42;&#x90FD;&#x662F;&#x53EF;&#x6269;&#x5C55;&#x7684;&#x2014;&#x2014;&#x4F60;&#x53EF;&#x4EE5;&#x7F16;&#x5199;&#x81EA;&#x5DF1;&#x7684;&#x5BFC;&#x822A;&#x5668;&#xFF0C;&#x751A;&#x81F3;&#x53EF;&#x4EE5;&#x66FF;&#x6362;&#x9762;&#x5411;&#x7528;&#x6237;&#x7684;API&#x3002;</p>
+<h2 id="&#x57FA;&#x7840;">&#x57FA;&#x7840;</h2>
+<h3 id="&#x8D77;&#x6B65;">&#x8D77;&#x6B65;</h3>
 
                                 
                                 </section>
@@ -547,12 +498,12 @@ export default function App() {
 
             
                 
-                <a href="getting-started.html" class="navigation navigation-prev " aria-label="Previous page: 1、环境搭建">
+                <a href="list.html" class="navigation navigation-prev " aria-label="Previous page: 10、创建List组件">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="tab-navigator.html" class="navigation navigation-next " aria-label="Next page: 3、引入tabbar导航器">
+                <a href="../thanks/README.md" class="navigation navigation-next " aria-label="Next page: 感谢">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -563,7 +514,7 @@ export default function App() {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"2、Index组件初始化","level":"1.3.2","depth":2,"next":{"title":"3、引入tabbar导航器","level":"1.3.3","depth":2,"path":"project/tab-navigator.md","ref":"project/tab-navigator.md","articles":[]},"previous":{"title":"1、环境搭建","level":"1.3.1","depth":2,"path":"project/getting-started.md","ref":"project/getting-started.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"project/init-index.md","mtime":"2020-02-14T04:47:56.768Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-15T12:55:27.080Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"11、react-navigation","level":"1.3.11","depth":2,"next":{"title":"感谢","level":"1.4","depth":1,"path":"thanks/README.md","ref":"thanks/README.md","articles":[]},"previous":{"title":"10、创建List组件","level":"1.3.10","depth":2,"path":"project/list.md","ref":"project/list.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"project/react-navigation.md","mtime":"2020-02-15T07:36:20.339Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-15T12:55:27.080Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

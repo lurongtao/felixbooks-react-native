@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>2、Index组件初始化 · GitBook</title>
+        <title>7、创建HotCate组件 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="tab-navigator.html" />
+    <link rel="next" href="home-top10.html" />
     
     
-    <link rel="prev" href="getting-started.html" />
+    <link rel="prev" href="home-swiper.html" />
     
 
     </head>
@@ -265,7 +265,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3.2" data-path="init-index.html">
+        <li class="chapter " data-level="1.3.2" data-path="init-index.html">
             
                 <a href="init-index.html">
             
@@ -330,7 +330,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.7" data-path="home-cate.html">
+        <li class="chapter active" data-level="1.3.7" data-path="home-cate.html">
             
                 <a href="home-cate.html">
             
@@ -443,7 +443,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >2、Index组件初始化</a>
+        <a href=".." >7、创建HotCate组件</a>
     </h1>
 </div>
 
@@ -458,67 +458,98 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x7F16;&#x5199;-index&#x7EC4;&#x4EF6;-&#x57FA;&#x672C;&#x7ED3;&#x6784;">&#x7F16;&#x5199; Index&#x7EC4;&#x4EF6; &#x57FA;&#x672C;&#x7ED3;&#x6784;</h1>
-<p>&#x5728;&#x6839;&#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA; <code>pages/index</code> &#x6587;&#x4EF6;&#x5939;&#xFF0C;&#x5728;&#x91CC;&#x9762;&#x521B;&#x5EFA;&#x4E00;&#x4E2A; <code>Index.tsx</code> &#x6587;&#x4EF6;&#xFF0C;&#x7F16;&#x8F91;&#x5185;&#x5BB9;&#xFF1A;</p>
-<pre><code class="lang-ts">// pages/index/Index.tsx
-import React, { Component } from &apos;react&apos;
+                                <h1 id="&#x6784;&#x5EFA;-hotcatetsx-&#x6587;&#x4EF6;">&#x6784;&#x5EFA; HotCate.tsx &#x6587;&#x4EF6;</h1>
+<p>&#x5728; pages/home &#x6587;&#x4EF6;&#x5939;&#x91CC;&#x6784;&#x5EFA; HotCate.tsx &#x6587;&#x4EF6;&#xFF0C;&#x5185;&#x5BB9;&#x4E3A;&#xFF1A;</p>
+<pre><code class="lang-js"><span class="hljs-keyword">import</span> React, { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>
+<span class="hljs-keyword">import</span> { Grid } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;@ant-design/react-native&apos;</span>
+<span class="hljs-keyword">import</span> { get } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../../utils/http&apos;</span>
 
-import {
+<span class="hljs-keyword">import</span> styles <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./style_home&apos;</span>
+
+<span class="hljs-keyword">import</span> {
   View,
   Text,
+  Image,
   StyleSheet
-} from &apos;react-native&apos;
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react-native&apos;</span>
 
 interface Props {
 
 }
-
 interface State {
-
+  hotCate: <span class="hljs-built_in">Array</span>&lt;object&gt;
 }
 
-export default class Index extends Component&lt;Props, State&gt; {
-  constructor(props) {
-    super(props)
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HotCate</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span>&lt;<span class="hljs-title">Props</span>, <span class="hljs-title">State</span>&gt; </span>{
+  state = {
+    hotCate: []
   }
 
-  state: State = {
-
+  _renderItem(el, index) {
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">View</span>
+        <span class="hljs-attr">style</span>=<span class="hljs-string">{styles.container}</span>
+      &gt;</span>
+        {el.img ? <span class="hljs-tag">&lt;<span class="hljs-name">Image</span> <span class="hljs-attr">source</span>=<span class="hljs-string">{{uri:</span> <span class="hljs-attr">el.img</span>}} <span class="hljs-attr">style</span>=<span class="hljs-string">{styles.gridImg}</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">Image</span>&gt;</span> : null}
+        <span class="hljs-tag">&lt;<span class="hljs-name">Text</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{styles.gridText}</span>&gt;</span>{el.title}<span class="hljs-tag">&lt;/<span class="hljs-name">Text</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">View</span>&gt;</span></span>
+    )
   }
 
-  componentDidMount() {
+  <span class="hljs-keyword">async</span> componentDidMount() {
+    <span class="hljs-keyword">let</span> hotCate = <span class="hljs-keyword">await</span> get(<span class="hljs-string">&apos;http://localhost:9000/api/hotcate&apos;</span>)
 
+    <span class="hljs-comment">// &#x8865;&#x5168;&#x6700;&#x540E;&#x4E00;&#x9879;&#x6570;&#x636E;</span>
+    hotCate.push({
+      img: <span class="hljs-string">&apos;&apos;</span>,
+      title: <span class="hljs-string">&apos;&#x66F4;&#x591A;...&apos;</span>
+    })
+
+    <span class="hljs-keyword">this</span>.setState({
+      hotCate
+    })
   }
 
   render() {
-    return (
-      &lt;View style={styles.container}&gt;
-        &lt;Text&gt;
-          Index &#x7EC4;&#x4EF6;&#x5185;&#x5BB9;
-        &lt;/Text&gt;
-      &lt;/View&gt;
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">View</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">Grid</span>
+          <span class="hljs-attr">data</span>=<span class="hljs-string">{this.state.hotCate}</span>
+          <span class="hljs-attr">renderItem</span>=<span class="hljs-string">{this._renderItem}</span>
+          <span class="hljs-attr">hasLine</span>=<span class="hljs-string">{false}</span>
+        &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">Grid</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">View</span>&gt;</span></span>
     )
   }
 }
+</code></pre>
+<p>&#x4FEE;&#x6539; pages/home/style_home.js &#x6587;&#x4EF6;&#xFF0C;&#x6837;&#x5F0F;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-js"><span class="hljs-keyword">import</span> { StyleSheet } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react-native&apos;</span>
 
-const styles = StyleSheet.create({
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> StyleSheet.create({
+  <span class="hljs-comment">// hotcate</span>
   container: {
-    flex: 1,
-    backgroundColor: &apos;#fff&apos;,
-    alignItems: &apos;center&apos;,
-    justifyContent: &apos;center&apos;,
+    paddingTop: <span class="hljs-number">20</span>,
+    paddingBottom: <span class="hljs-number">10</span>
+  },
+
+  gridContainer: {
+    flex: <span class="hljs-number">1</span>,
+    justifyContent: <span class="hljs-string">&apos;center&apos;</span>,
+    alignItems: <span class="hljs-string">&apos;center&apos;</span>
+  },
+
+  gridText: {
+    fontSize: <span class="hljs-number">16</span>,
+    margin: <span class="hljs-number">6</span>
+  },
+
+  gridImg: {
+    width: <span class="hljs-number">70</span>,
+    height: <span class="hljs-number">70</span>,
+    borderRadius: <span class="hljs-number">5</span>
   },
 })
-</code></pre>
-<p>&#x4FEE;&#x6539;&#x6839;&#x76EE;&#x5F55;&#x4E0B;&#x7684; <code>App.tsx</code>&#xFF1A;</p>
-<pre><code class="lang-ts">import React from &apos;react&apos;
-import Index from &apos;./pages/index/Index&apos;
-
-export default function App() {
-  return (
-    &lt;Index&gt;&lt;/Index&gt;
-  )
-}
 </code></pre>
 
                                 
@@ -547,12 +578,12 @@ export default function App() {
 
             
                 
-                <a href="getting-started.html" class="navigation navigation-prev " aria-label="Previous page: 1、环境搭建">
+                <a href="home-swiper.html" class="navigation navigation-prev " aria-label="Previous page: 6、创建Swiper组件">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="tab-navigator.html" class="navigation navigation-next " aria-label="Next page: 3、引入tabbar导航器">
+                <a href="home-top10.html" class="navigation navigation-next " aria-label="Next page: 8、创建Top10组件">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -563,7 +594,7 @@ export default function App() {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"2、Index组件初始化","level":"1.3.2","depth":2,"next":{"title":"3、引入tabbar导航器","level":"1.3.3","depth":2,"path":"project/tab-navigator.md","ref":"project/tab-navigator.md","articles":[]},"previous":{"title":"1、环境搭建","level":"1.3.1","depth":2,"path":"project/getting-started.md","ref":"project/getting-started.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"project/init-index.md","mtime":"2020-02-14T04:47:56.768Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-15T12:55:27.080Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"7、创建HotCate组件","level":"1.3.7","depth":2,"next":{"title":"8、创建Top10组件","level":"1.3.8","depth":2,"path":"project/home-top10.md","ref":"project/home-top10.md","articles":[]},"previous":{"title":"6、创建Swiper组件","level":"1.3.6","depth":2,"path":"project/home-swiper.md","ref":"project/home-swiper.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"project/home-cate.md","mtime":"2020-02-15T01:56:49.066Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-15T12:55:27.080Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
