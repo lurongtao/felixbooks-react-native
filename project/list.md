@@ -101,8 +101,9 @@ export default class List extends Component<Props, State> {
   }
 
   // 加载数据
+  // 注：这里的 key: value.id 由于模拟接口会出现重复的情况
   _loadData() {
-    let data = this.props.store.list.slice(0, this.state.curPage * pageSize)    
+    let data = this.props.store.list.slice(0, this.state.curPage * pageSize)
     let flatListData = data.map((value, index) => ({
         data: value,
         key: value.id

@@ -25,5 +25,10 @@
   - [9、更改Swiper和Home组件](project/home-swiper-store.md)
   - [10、创建List组件](project/list.md)
   - [11、react-navigation](project/react-navigation.md)
+  - [12、创建详情页](project/detail.md)
+  - [13、创建美食地图页](project/map.md)
+  - [14、是否显示地图页签](project/more-show-map.md)
+  - [15、拍照功能](project/more-take-picture.md)
+  - [16、项目发布](project/publish.md)
 
 - [感谢](thanks/README.md)
