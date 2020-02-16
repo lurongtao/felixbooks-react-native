@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>8、创建Top10组件 · GitBook</title>
+        <title>14、是否显示地图页签 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="home-swiper-store.html" />
+    <link rel="next" href="more-take-picture.html" />
     
     
-    <link rel="prev" href="home-cate.html" />
+    <link rel="prev" href="map.html" />
     
 
     </head>
@@ -343,7 +343,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3.8" data-path="home-top10.html">
+        <li class="chapter " data-level="1.3.8" data-path="home-top10.html">
             
                 <a href="home-top10.html">
             
@@ -421,7 +421,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.14" data-path="more-show-map.html">
+        <li class="chapter active" data-level="1.3.14" data-path="more-show-map.html">
             
                 <a href="more-show-map.html">
             
@@ -508,7 +508,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >8、创建Top10组件</a>
+        <a href=".." >14、是否显示地图页签</a>
     </h1>
 </div>
 
@@ -523,13 +523,15 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x6784;&#x5EFA;-top10tsc-&#x7EC4;&#x4EF6;">&#x6784;&#x5EFA; Top10.tsc &#x7EC4;&#x4EF6;</h1>
-<p>Top10&#x7EC4;&#x4EF6;&#x6E32;&#x67D3;&#x7684;&#x6570;&#x636E;&#x548C;Swiper&#x7EC4;&#x4EF6;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x540C;&#x4E00;&#x4E2A;&#x63A5;&#x53E3;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x56E0;&#x6B64;&#x6211;&#x4EEC;&#x51B3;&#x5B9A;&#x5E94;&#x7528;Mobx&#x6765;&#x7BA1;&#x7406;&#x8FD9;&#x4E2A;&#x6570;&#x636E;&#x3002;</p>
-<h2 id="&#x5B89;&#x88C5;-mobx-&#x76F8;&#x5173;&#x6A21;&#x5757;">&#x5B89;&#x88C5; Mobx &#x76F8;&#x5173;&#x6A21;&#x5757;</h2>
-<pre><code>npm i mobx mobx-react -S
-</code></pre><h2 id="&#x6784;&#x5EFA;-store">&#x6784;&#x5EFA; store</h2>
-<p>&#x5728;&#x9879;&#x76EE;&#x6839;&#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA; store &#x6587;&#x4EF6;&#x5939;&#xFF0C;&#x5728;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x4E0B;&#x521B;&#x5EFA; index.js &#x6587;&#x4EF6;&#xFF1A;</p>
+                                <h1 id="&#x6784;&#x5EFA;-moretsx-&#x9875;&#x9762;">&#x6784;&#x5EFA; More.tsx &#x9875;&#x9762;</h1>
+<p>&#x66F4;&#x591A;&#x9875;&#x9762;&#x5B9E;&#x73B0;&#x4E86;&#x4E24;&#x4E2A;&#x529F;&#x80FD;&#xFF1A;</p>
+<p>1&#x3001;&#x662F;&#x5426;&#x663E;&#x793A;&#x5730;&#x56FE;&#x9875;&#x7B7E; </p>
+<p>2&#x3001;<a href="more-take-picture.html">&#x62CD;&#x7167;&#x529F;&#x80FD;</a></p>
+<h2 id="&#x662F;&#x5426;&#x663E;&#x793A;&#x5730;&#x56FE;&#x9875;&#x7B7E;">&#x662F;&#x5426;&#x663E;&#x793A;&#x5730;&#x56FE;&#x9875;&#x7B7E;</h2>
+<h4 id="&#x66F4;&#x65B0;-store">&#x66F4;&#x65B0; store</h4>
+<p>&#x6DFB;&#x52A0;&#x4E86; isShow &#x5C5E;&#x6027;&#xFF0C;&#x548C; setVisible &#x65B9;&#x6CD5;&#x3002;</p>
 <pre><code class="lang-js"><span class="hljs-comment">// store/index.js</span>
+
 <span class="hljs-keyword">import</span> {
   observable,
   action,
@@ -540,6 +542,10 @@
   <span class="hljs-comment">// swiper &#x4E0E; top10 &#x5171;&#x4EAB;&#x7684;&#x6570;&#x636E;</span>
   @observable
   list = []
+
+  <span class="hljs-comment">// &#x5B9A;&#x4E49;&#x662F;&#x5426;&#x663E;&#x793A;&#x5730;&#x56FE;&#x6309;&#x94AE;</span>
+  @observable
+  isShow = <span class="hljs-literal">true</span>
 
   <span class="hljs-comment">// swiper &#x6570;&#x636E;&#x8FC7;&#x6EE4;</span>
   @computed
@@ -568,28 +574,26 @@
   @action.bound
   setList(data) {
     <span class="hljs-keyword">this</span>.list = data
-  }  
+  }
+
+  <span class="hljs-comment">// &#x4FEE;&#x6539;&#x662F;&#x5426;&#x663E;&#x793A;&#x5730;&#x56FE;&#x6309;&#x94AE;</span>
+  @action.bound
+  setVisible(status) {
+    <span class="hljs-keyword">this</span>.isShow = status
+  }
 }
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">new</span> Store()
 </code></pre>
-<h2 id="&#x5F00;&#x59CB;&#x6784;&#x5EFA;-toptsx-&#x7EC4;&#x4EF6;">&#x5F00;&#x59CB;&#x6784;&#x5EFA; Top.tsx &#x7EC4;&#x4EF6;</h2>
-<p>&#x5728; pages/home &#x4E0B;&#x521B;&#x5EFA; Top.tsx &#x6587;&#x4EF6;&#xFF1A;</p>
-<pre><code class="lang-ts">// pages/home/Top.tsx
+<h4 id="&#x6DFB;&#x52A0;-moretsx-&#x6587;&#x4EF6;">&#x6DFB;&#x52A0; More.tsx &#x6587;&#x4EF6;</h4>
+<p>&#x5728;&#x6839;&#x76EE;&#x5F55;pages&#x4E0B;&#x521B;&#x5EFA; more &#x6587;&#x4EF6;&#x5939;&#xFF0C;&#x518D;&#x521B;&#x5EFA; More.tsx &#x6587;&#x4EF6;&#xFF0C;&#x5185;&#x5BB9;&#x5982;&#x4E0B;</p>
+<pre><code class="lang-ts">// pages/more/More.tsx
+
 import React, { Component } from &apos;react&apos;
-import { Grid } from &apos;@ant-design/react-native&apos;
+import { View, Text, Switch, AsyncStorage } from &apos;react-native&apos;
 import { observer, inject } from &apos;mobx-react&apos;
 
-import {
-  View,
-  Text,
-  Image
-} from &apos;react-native&apos;
-
-import styles from &apos;./style_home.js&apos;
-
 interface Props {
-  // store &#x4F5C;&#x4E3A;&#x7EC4;&#x4EF6;&#x7684; props
   store?: any
 }
 
@@ -597,104 +601,223 @@ interface State {
 
 }
 
-// &#x6CE8;&#x5165; store &#x4E0E; &#x5C06;&#x7C7B;&#x53D8;&#x4E3A;&#x53EF;&#x89C2;&#x5BDF;&#x7684;&#x5BF9;&#x8C61;
 @inject(&apos;store&apos;)
 @observer
-class Top10 extends Component&lt;Props, State&gt; {
+export default class Profile extends Component&lt;Props, State&gt; {
+  state = {
 
-  renderTop10(el, index) {
-    return (
-      &lt;View style={styles.top10ItemContainer}&gt;
-        &lt;View style={styles.top10ImgContainer}&gt;
-          &lt;Image style={styles.Top10Img} source={{uri: el.img}}&gt;&lt;/Image&gt;
-        &lt;/View&gt;
-        &lt;View style={styles.top10DesContainter}&gt;
-          &lt;Text style={styles.top10Titie}&gt;{el.name}&lt;/Text&gt;
-          &lt;Text style={styles.Top10Desc}&gt;{el.all_click} {el.favorites}&lt;/Text&gt;
-        &lt;/View&gt;
-      &lt;/View&gt;
-    )
   }
 
-  render() {   
+  async componentDidMount() {
+
+  }
+
+  render() {
     return (
-      &lt;View style={styles.top10Container}&gt;
-        &lt;View style={styles.top10Head}&gt;
-          &lt;Text style={styles.top10HeadText}&gt;&#x7CBE;&#x54C1;&#x597D;&#x83DC;&lt;/Text&gt;
-        &lt;/View&gt;
-        &lt;View style={styles.gridContainer}&gt;
-          &lt;Grid
-            data={this.props.store.top10}
-            columnNum={2}
-            hasLine={false}
-            renderItem={this.renderTop10}
-          /&gt;
+      &lt;View&gt;
+        &lt;View style={{
+          flexDirection: &apos;row&apos;, 
+          justifyContent: &apos;flex-start&apos;, 
+          alignItems: &apos;flex-start&apos;, 
+          padding: 20
+        }}&gt;
+          &lt;View style={{
+            height: 30, 
+            justifyContent: &apos;center&apos;, 
+            alignItems: &apos;center&apos;
+          }}&gt;
+            &lt;Text&gt;&#x662F;&#x5426;&#x663E;&#x793A;&#x5730;&#x56FE;&#xFF1A;&lt;/Text&gt;
+          &lt;/View&gt;
+          &lt;Switch
+            value={this.props.store.isShow}
+            onValueChange={(value) =&gt; {
+              this.props.store.setVisible(value)
+              AsyncStorage.setItem(&apos;isShow&apos;, value.toString())
+            }}
+          &gt;&lt;/Switch&gt;
         &lt;/View&gt;
       &lt;/View&gt;
     )
   }
 }
-
-export default Top10
 </code></pre>
-<p>&#x6CE8;&#x610F;&#xFF1A;expo-cli &#x6784;&#x5EFA;&#x7684;&#x9879;&#x76EE;&#xFF0C;&#x9ED8;&#x8BA4; ts &#x914D;&#x7F6E;&#x4E0D;&#x652F;&#x6301;&#x88C5;&#x9970;&#x5668;&#xFF0C;&#x4F1A;&#x7ED9;&#x51FA;&#x5982;&#x4E0B;&#x8B66;&#x544A;&#xFF1A;</p>
-<pre><code>Experimental support for decorators is a feature that is subject to change in a future release. Set the &apos;experimentalDecorators&apos; option in your &apos;tsconfig&apos; or &apos;jsconfig&apos; to remove this warning.
-</code></pre><p>&#x9700;&#x8981;&#x4FEE;&#x6539;&#x9879;&#x76EE;&#x6839;&#x76EE;&#x5F55;&#x4E0B;&#x7684; tsconfig.json&#xFF0C;&#x6DFB;&#x52A0;&#xFF1A;</p>
-<pre><code>&quot;experimentalDecorators&quot;: true
-</code></pre><p>&#x5982;&#x679C;&#x4E0D;&#x80FD;&#x8D77;&#x4F5C;&#x7528;&#xFF0C;&#x91CD;&#x65B0;&#x542F;&#x52A8;VSCode&#x5373;&#x53EF;&#x3002;</p>
-<h2 id="&#x6DFB;&#x52A0;-top10-&#x6837;&#x5F0F;">&#x6DFB;&#x52A0; top10 &#x6837;&#x5F0F;</h2>
-<pre><code class="lang-js"><span class="hljs-comment">// pages/home/style_home.js</span>
-<span class="hljs-keyword">import</span> { StyleSheet } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react-native&apos;</span>
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> StyleSheet.create({
-  <span class="hljs-comment">// top10</span>
-  top10Container: {
-    paddingBottom: <span class="hljs-number">44</span>,
-    backgroundColor: <span class="hljs-string">&apos;#eee&apos;</span>
-  },
-
-  top10Head: {
-    height: <span class="hljs-number">50</span>,
-    paddingLeft: <span class="hljs-number">10</span>,
-    justifyContent: <span class="hljs-string">&apos;flex-end&apos;</span>,
-  },
-
-  top10HeadText: {
-    fontSize: <span class="hljs-number">18</span>
-  },
-
-  top10ItemContainer: {
-    flex: <span class="hljs-number">1</span>,
-    paddingRight: <span class="hljs-number">10</span>
-  },
-
-  top10DesContainter: {
-    marginLeft: <span class="hljs-number">10</span>,
-    paddingTop: <span class="hljs-number">10</span>,
-    paddingBottom: <span class="hljs-number">10</span>,
-    justifyContent: <span class="hljs-string">&apos;center&apos;</span>,
-    alignItems: <span class="hljs-string">&apos;center&apos;</span>,
-    backgroundColor: <span class="hljs-string">&apos;#fff&apos;</span>
-  },
-
-  top10ImgContainer: {
-    paddingLeft: <span class="hljs-number">10</span>,
-    paddingTop: <span class="hljs-number">10</span>,
-    flex: <span class="hljs-number">1</span>
-  },
-
-  Top10Img: {
-    width: <span class="hljs-string">&apos;100%&apos;</span>,
-    height: <span class="hljs-string">&apos;100%&apos;</span>,
-  },
-
-  top10Titie: {
-    fontSize: <span class="hljs-number">20</span>
-  },
-
-  Top10Desc: {
-    color: <span class="hljs-string">&apos;#666&apos;</span>
+<h4 id="&#x4FEE;&#x6539;-pagesindexindextsx-&#x6587;&#x4EF6;">&#x4FEE;&#x6539; pages/index/Index.tsx &#x6587;&#x4EF6;</h4>
+<h5 id="1&#x3001;&#x4FEE;&#x6539;&#x4EE3;&#x7801;&#x7684;&#x8981;&#x70B9;">1&#x3001;&#x4FEE;&#x6539;&#x4EE3;&#x7801;&#x7684;&#x8981;&#x70B9;</h5>
+<pre><code class="lang-js">  <span class="hljs-comment">// &#x5B9A;&#x4E49; store</span>
+  interface Props {
+    navigation?: any
+    store?: any
   }
-})
+
+  <span class="hljs-comment">// &#x8BB0;&#x5F55;&#x7528;&#x6237;&#x7F13;&#x5B58;</span>
+  <span class="hljs-keyword">async</span> componentDidMount() {
+    <span class="hljs-keyword">let</span> isShow = <span class="hljs-keyword">await</span> AsyncStorage.getItem(<span class="hljs-string">&apos;isShow&apos;</span>)
+    <span class="hljs-keyword">this</span>.props.store.setVisible(<span class="hljs-built_in">JSON</span>.parse(isShow))
+  }
+
+  <span class="hljs-comment">// &#x5728; tabbar &#x91CC;&#x4FEE;&#x6539;</span>
+  {
+    <span class="hljs-keyword">this</span>.props.store.isShow
+      ? (
+        &lt;TabNavigator.Item
+          selected={this.state.selectedTab === &apos;map&apos;}
+          title=&quot;&#x5730;&#x56FE;&quot;
+          titleStyle={styles.titleStyle}
+          selectedTitleStyle={styles.selectedTitleStyle}
+          renderIcon={() =&gt; &lt;Img source={map} /&gt;}
+          renderSelectedIcon={() =&gt; &lt;Img source={mapActive} /&gt;}
+          onPress={() =&gt; {
+            this.setState({ selectedTab: &apos;map&apos; })
+            this.props.navigation.setOptions({ title: &apos;&#x5730;&#x56FE;&apos; })
+          }}
+        &gt;
+          &lt;Map&gt;&lt;/Map&gt;
+        &lt;/TabNavigator.Item&gt;
+      )
+      : null
+  }
+</code></pre>
+<h5 id="2-&#x5168;&#x90E8;&#x4EE3;&#x7801;">2. &#x5168;&#x90E8;&#x4EE3;&#x7801;</h5>
+<pre><code class="lang-ts">// pages/index/Index.tsx
+
+import React, { Component, ContextType } from &apos;react&apos;
+import TabNavigator from &apos;react-native-tab-navigator&apos;
+import * as Device from &apos;expo-device&apos;
+import { observer, inject } from &apos;mobx-react&apos;
+
+import { Provider } from &apos;../../context/navigation&apos;
+
+import {
+  View,
+  Text,
+  AsyncStorage
+} from &apos;react-native&apos;
+
+import {
+  Img
+} from &apos;./styled_index&apos;
+import styles from &apos;./style_index&apos;
+
+import cookbook from &apos;../../assets/images/cookbook.png&apos;
+import cookbookActive from &apos;../../assets/images/cookbook-active.png&apos;
+import category from &apos;../../assets/images/menu.png&apos;
+import categoryActive from &apos;../../assets/images/menu-active.png&apos;
+import map from &apos;../../assets/images/location.png&apos;
+import mapActive from &apos;../../assets/images/location-active.png&apos;
+import more from &apos;../../assets/images/more.png&apos;
+import moreActive from &apos;../../assets/images/more-active.png&apos;
+
+import Home from &apos;../home/Home&apos;
+import List from &apos;../list/List&apos;
+import Map from &apos;../map/Map&apos;
+import More from &apos;../more/More&apos;
+
+interface Props {
+  navigation?: any
+  store?: any
+}
+
+interface State {
+  selectedTab: string
+}
+
+@inject(&apos;store&apos;)
+@observer
+class Index extends Component&lt;Props, State&gt; {
+  constructor(props: Props) {
+    super(props)
+  }
+
+  state: State = {
+    selectedTab: &apos;home&apos;
+  }
+
+  async componentDidMount() {
+    let isShow = await AsyncStorage.getItem(&apos;isShow&apos;)
+    this.props.store.setVisible(JSON.parse(isShow))
+  }
+
+  render() {
+    return (
+      &lt;&gt;
+        &lt;TabNavigator
+          tabBarStyle={Device.deviceName === &apos;iPhone X&#x280;&apos; ? styles.tabBarStyle : null}
+        &gt;
+          &lt;TabNavigator.Item
+            selected={this.state.selectedTab === &apos;home&apos;}
+            title=&quot;&#x7F8E;&#x98DF;&#x5927;&#x5168;&quot;
+            titleStyle={styles.titleStyle}
+            selectedTitleStyle={styles.selectedTitleStyle}
+            renderIcon={() =&gt; &lt;Img source={cookbook} /&gt;}
+            renderSelectedIcon={() =&gt; &lt;Img source={cookbookActive} /&gt;}
+            onPress={() =&gt; {
+              this.setState({ selectedTab: &apos;home&apos; })
+              this.props.navigation.setOptions({ title: &apos;&#x7F8E;&#x98DF;&#x5927;&#x5168;&apos; })
+            }}
+          &gt;
+            &lt;Provider value={{...this.props}}&gt;
+              &lt;Home&gt;&lt;/Home&gt;
+            &lt;/Provider&gt;
+          &lt;/TabNavigator.Item&gt;
+          &lt;TabNavigator.Item
+            selected={this.state.selectedTab === &apos;category&apos;}
+            title=&quot;&#x70ED;&#x95E8;&quot;
+            titleStyle={styles.titleStyle}
+            selectedTitleStyle={styles.selectedTitleStyle}
+            renderIcon={() =&gt; &lt;Img source={category} /&gt;}
+            renderSelectedIcon={() =&gt; &lt;Img source={categoryActive} /&gt;}
+            onPress={
+              () =&gt; {
+                this.setState({ selectedTab: &apos;category&apos; })
+                this.props.navigation.setOptions({ title: &apos;&#x70ED;&#x95E8;&apos; })
+              }
+            }
+          &gt;
+            &lt;Provider value={{...this.props}}&gt;
+              &lt;List&gt;&lt;/List&gt;
+            &lt;/Provider&gt;
+          &lt;/TabNavigator.Item&gt;
+          {
+            this.props.store.isShow
+              ? (
+                &lt;TabNavigator.Item
+                  selected={this.state.selectedTab === &apos;map&apos;}
+                  title=&quot;&#x5730;&#x56FE;&quot;
+                  titleStyle={styles.titleStyle}
+                  selectedTitleStyle={styles.selectedTitleStyle}
+                  renderIcon={() =&gt; &lt;Img source={map} /&gt;}
+                  renderSelectedIcon={() =&gt; &lt;Img source={mapActive} /&gt;}
+                  onPress={() =&gt; {
+                    this.setState({ selectedTab: &apos;map&apos; })
+                    this.props.navigation.setOptions({ title: &apos;&#x5730;&#x56FE;&apos; })
+                  }}
+                &gt;
+                  &lt;Map&gt;&lt;/Map&gt;
+                &lt;/TabNavigator.Item&gt;
+              )
+              : null
+          }
+          &lt;TabNavigator.Item
+            selected={this.state.selectedTab === &apos;more&apos;}
+            title=&quot;&#x66F4;&#x591A;&quot;
+            titleStyle={styles.titleStyle}
+            selectedTitleStyle={styles.selectedTitleStyle}
+            renderIcon={() =&gt; &lt;Img source={more} /&gt;}
+            renderSelectedIcon={() =&gt; &lt;Img source={moreActive} /&gt;}
+            onPress={() =&gt; {
+              this.setState({ selectedTab: &apos;more&apos; })
+              this.props.navigation.setOptions({ title: &apos;&#x66F4;&#x591A;&apos; })
+            }}
+          &gt;
+            &lt;More&gt;&lt;/More&gt;
+          &lt;/TabNavigator.Item&gt;
+        &lt;/TabNavigator&gt;
+      &lt;/&gt;
+    )
+  }
+}
+
+export default Index
 </code></pre>
 
                                 
@@ -723,12 +846,12 @@ export default Top10
 
             
                 
-                <a href="home-cate.html" class="navigation navigation-prev " aria-label="Previous page: 7、创建HotCate组件">
+                <a href="map.html" class="navigation navigation-prev " aria-label="Previous page: 13、创建美食地图页">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="home-swiper-store.html" class="navigation navigation-next " aria-label="Next page: 9、更改Swiper和Home组件">
+                <a href="more-take-picture.html" class="navigation navigation-next " aria-label="Next page: 15、拍照功能">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -739,7 +862,7 @@ export default Top10
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"8、创建Top10组件","level":"1.3.8","depth":2,"next":{"title":"9、更改Swiper和Home组件","level":"1.3.9","depth":2,"path":"project/home-swiper-store.md","ref":"project/home-swiper-store.md","articles":[]},"previous":{"title":"7、创建HotCate组件","level":"1.3.7","depth":2,"path":"project/home-cate.md","ref":"project/home-cate.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"project/home-top10.md","mtime":"2020-02-15T02:26:24.609Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-16T12:22:47.536Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"14、是否显示地图页签","level":"1.3.14","depth":2,"next":{"title":"15、拍照功能","level":"1.3.15","depth":2,"path":"project/more-take-picture.md","ref":"project/more-take-picture.md","articles":[]},"previous":{"title":"13、创建美食地图页","level":"1.3.13","depth":2,"path":"project/map.md","ref":"project/map.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"project/more-show-map.md","mtime":"2020-02-16T11:46:12.594Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-16T12:22:47.536Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>8、创建Top10组件 · GitBook</title>
+        <title>15、拍照功能 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="home-swiper-store.html" />
+    <link rel="next" href="publish.html" />
     
     
-    <link rel="prev" href="home-cate.html" />
+    <link rel="prev" href="more-show-map.html" />
     
 
     </head>
@@ -343,7 +343,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3.8" data-path="home-top10.html">
+        <li class="chapter " data-level="1.3.8" data-path="home-top10.html">
             
                 <a href="home-top10.html">
             
@@ -434,7 +434,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.15" data-path="more-take-picture.html">
+        <li class="chapter active" data-level="1.3.15" data-path="more-take-picture.html">
             
                 <a href="more-take-picture.html">
             
@@ -508,7 +508,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >8、创建Top10组件</a>
+        <a href=".." >15、拍照功能</a>
     </h1>
 </div>
 
@@ -523,178 +523,142 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x6784;&#x5EFA;-top10tsc-&#x7EC4;&#x4EF6;">&#x6784;&#x5EFA; Top10.tsc &#x7EC4;&#x4EF6;</h1>
-<p>Top10&#x7EC4;&#x4EF6;&#x6E32;&#x67D3;&#x7684;&#x6570;&#x636E;&#x548C;Swiper&#x7EC4;&#x4EF6;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x540C;&#x4E00;&#x4E2A;&#x63A5;&#x53E3;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x56E0;&#x6B64;&#x6211;&#x4EEC;&#x51B3;&#x5B9A;&#x5E94;&#x7528;Mobx&#x6765;&#x7BA1;&#x7406;&#x8FD9;&#x4E2A;&#x6570;&#x636E;&#x3002;</p>
-<h2 id="&#x5B89;&#x88C5;-mobx-&#x76F8;&#x5173;&#x6A21;&#x5757;">&#x5B89;&#x88C5; Mobx &#x76F8;&#x5173;&#x6A21;&#x5757;</h2>
-<pre><code>npm i mobx mobx-react -S
-</code></pre><h2 id="&#x6784;&#x5EFA;-store">&#x6784;&#x5EFA; store</h2>
-<p>&#x5728;&#x9879;&#x76EE;&#x6839;&#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA; store &#x6587;&#x4EF6;&#x5939;&#xFF0C;&#x5728;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x4E0B;&#x521B;&#x5EFA; index.js &#x6587;&#x4EF6;&#xFF1A;</p>
-<pre><code class="lang-js"><span class="hljs-comment">// store/index.js</span>
-<span class="hljs-keyword">import</span> {
-  observable,
-  action,
-  computed
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;mobx&apos;</span>
-
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Store</span> </span>{
-  <span class="hljs-comment">// swiper &#x4E0E; top10 &#x5171;&#x4EAB;&#x7684;&#x6570;&#x636E;</span>
-  @observable
-  list = []
-
-  <span class="hljs-comment">// swiper &#x6570;&#x636E;&#x8FC7;&#x6EE4;</span>
-  @computed
-  get swiper() {
-    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.list.slice(<span class="hljs-number">0</span>, <span class="hljs-number">5</span>).map((value, index) =&gt; {
-      <span class="hljs-keyword">return</span> {
-        img: value.img
-      }
-    })
-  }
-
-  <span class="hljs-comment">// top10 &#x6570;&#x636E;&#x8FC7;&#x6EE4;</span>
-  @computed
-  get top10() {
-    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.list.slice(<span class="hljs-number">0</span>, <span class="hljs-number">10</span>).map((value, index) =&gt; {
-      <span class="hljs-keyword">return</span> {
-        img: value.img,
-        all_click: value.all_click,
-        favorites: value.favorites,
-        name: value.name
-      }
-    })
-  }
-
-  <span class="hljs-comment">// &#x88C5;&#x8F7D; list &#x6570;&#x636E;</span>
-  @action.bound
-  setList(data) {
-    <span class="hljs-keyword">this</span>.list = data
-  }  
-}
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">new</span> Store()
-</code></pre>
-<h2 id="&#x5F00;&#x59CB;&#x6784;&#x5EFA;-toptsx-&#x7EC4;&#x4EF6;">&#x5F00;&#x59CB;&#x6784;&#x5EFA; Top.tsx &#x7EC4;&#x4EF6;</h2>
-<p>&#x5728; pages/home &#x4E0B;&#x521B;&#x5EFA; Top.tsx &#x6587;&#x4EF6;&#xFF1A;</p>
-<pre><code class="lang-ts">// pages/home/Top.tsx
-import React, { Component } from &apos;react&apos;
-import { Grid } from &apos;@ant-design/react-native&apos;
+                                <h1 id="&#x6784;&#x5EFA;-moretsx-&#x9875;&#x9762;">&#x6784;&#x5EFA; More.tsx &#x9875;&#x9762;</h1>
+<p>&#x66F4;&#x591A;&#x9875;&#x9762;&#x5B9E;&#x73B0;&#x4E86;&#x4E24;&#x4E2A;&#x529F;&#x80FD;&#xFF1A;</p>
+<p>1&#x3001;<a href="more-show-map.html">&#x662F;&#x5426;&#x663E;&#x793A;&#x5730;&#x56FE;&#x9875;&#x7B7E;</a> </p>
+<p>2&#x3001;&#x62CD;&#x7167;&#x529F;&#x80FD;</p>
+<h1 id="&#x62CD;&#x7167;&#x529F;&#x80FD;">&#x62CD;&#x7167;&#x529F;&#x80FD;</h1>
+<h2 id="&#x5B89;&#x88C5;&#x6A21;&#x5757;">&#x5B89;&#x88C5;&#x6A21;&#x5757;</h2>
+<pre><code>npm install expo-camera -S
+</code></pre><h2 id="&#x6539;&#x5199;-moretsx-&#x4EE3;&#x7801;">&#x6539;&#x5199; More.tsx &#x4EE3;&#x7801;</h2>
+<p>&#x4EE5;&#x4E0B;&#x4EE3;&#x7801;&#x662F; &#x62CD;&#x7167; &#x548C; &#x5207;&#x6362;&#x663E;&#x793A;&#x5730;&#x56FE;&#x6309;&#x94AE; &#x7684;&#x5168;&#x90E8;&#x4EE3;&#x7801;&#x3002;</p>
+<pre><code class="lang-ts">import React, { Component } from &apos;react&apos;
+import { View, Text, Switch, AsyncStorage, TouchableOpacity, Image } from &apos;react-native&apos;
 import { observer, inject } from &apos;mobx-react&apos;
 
-import {
-  View,
-  Text,
-  Image
-} from &apos;react-native&apos;
-
-import styles from &apos;./style_home.js&apos;
+import * as Permissions from &apos;expo-permissions&apos;
+import { Camera } from &apos;expo-camera&apos;
 
 interface Props {
-  // store &#x4F5C;&#x4E3A;&#x7EC4;&#x4EF6;&#x7684; props
   store?: any
 }
 
 interface State {
-
+  hasCameraPermission: boolean
+  type: boolean
+  isTakePic: boolean,
+  picUri: string
 }
 
-// &#x6CE8;&#x5165; store &#x4E0E; &#x5C06;&#x7C7B;&#x53D8;&#x4E3A;&#x53EF;&#x89C2;&#x5BDF;&#x7684;&#x5BF9;&#x8C61;
 @inject(&apos;store&apos;)
 @observer
-class Top10 extends Component&lt;Props, State&gt; {
+export default class Profile extends Component&lt;Props, State&gt; {
+  camera = null
 
-  renderTop10(el, index) {
-    return (
-      &lt;View style={styles.top10ItemContainer}&gt;
-        &lt;View style={styles.top10ImgContainer}&gt;
-          &lt;Image style={styles.Top10Img} source={{uri: el.img}}&gt;&lt;/Image&gt;
-        &lt;/View&gt;
-        &lt;View style={styles.top10DesContainter}&gt;
-          &lt;Text style={styles.top10Titie}&gt;{el.name}&lt;/Text&gt;
-          &lt;Text style={styles.Top10Desc}&gt;{el.all_click} {el.favorites}&lt;/Text&gt;
-        &lt;/View&gt;
-      &lt;/View&gt;
-    )
+  state = {
+    hasCameraPermission: null,
+    type: Camera.Constants.Type.back,
+    isTakePic: false,
+    picUri: &apos;http://placehold.it/240x180&apos;
   }
 
-  render() {   
+  async componentDidMount() {
+    const { status } = await Permissions.askAsync(Permissions.CAMERA);
+    this.setState({ 
+      hasCameraPermission: status === &apos;granted&apos; 
+    })
+  }
+
+  showTakePicScene() {
+    this.setState({
+      isTakePic: true
+    })
+  }
+
+  async takePicture() {
+    let result = await this.camera.takePictureAsync()
+    this.setState({
+      isTakePic: false,
+      picUri: result.uri
+    })
+  }
+
+  render() {
     return (
-      &lt;View style={styles.top10Container}&gt;
-        &lt;View style={styles.top10Head}&gt;
-          &lt;Text style={styles.top10HeadText}&gt;&#x7CBE;&#x54C1;&#x597D;&#x83DC;&lt;/Text&gt;
-        &lt;/View&gt;
-        &lt;View style={styles.gridContainer}&gt;
-          &lt;Grid
-            data={this.props.store.top10}
-            columnNum={2}
-            hasLine={false}
-            renderItem={this.renderTop10}
-          /&gt;
-        &lt;/View&gt;
-      &lt;/View&gt;
+      &lt;&gt;
+        {
+          this.state.isTakePic
+            ? (
+              &lt;Camera
+                style={{ flex: 1 }} 
+                type={this.state.type}
+                ref={ref =&gt; {
+                  this.camera = ref
+                }}
+              &gt;
+                &lt;TouchableOpacity
+                  onPress={this.takePicture.bind(this)}
+                &gt;
+                  &lt;View style={{
+                    marginLeft: 20, 
+                    width: 80, 
+                    height: 40, 
+                    backgroundColor: &apos;#f9efd4&apos;, 
+                    justifyContent: &apos;center&apos;, 
+                    alignItems: &apos;center&apos;
+                  }}&gt;
+                    &lt;Text&gt;&#x62CD;&#x7167;&lt;/Text&gt;
+                  &lt;/View&gt;
+                &lt;/TouchableOpacity&gt;
+              &lt;/Camera&gt;
+            )
+            : (
+              &lt;View&gt;
+                &lt;View style={{
+                  flexDirection: &apos;row&apos;, 
+                  justifyContent: &apos;flex-start&apos;, 
+                  alignItems: &apos;flex-start&apos;, 
+                  padding: 20
+                }}&gt;
+                  &lt;View style={{
+                    height: 30, 
+                    justifyContent: &apos;center&apos;, 
+                    alignItems: &apos;center&apos;
+                  }}&gt;
+                    &lt;Text&gt;&#x662F;&#x5426;&#x663E;&#x793A;&#x5730;&#x56FE;&#xFF1A;&lt;/Text&gt;
+                  &lt;/View&gt;
+                  &lt;Switch
+                    value={this.props.store.isShow}
+                    onValueChange={(value) =&gt; {
+                      this.props.store.setVisible(value)
+                      AsyncStorage.setItem(&apos;isShow&apos;, value.toString())
+                    }}
+                  &gt;&lt;/Switch&gt;
+                &lt;/View&gt;
+                &lt;TouchableOpacity
+                  onPress={this.showTakePicScene.bind(this)}
+                &gt;
+                  &lt;View style={{
+                    marginLeft: 20,
+                    width: 80, 
+                    height: 40, 
+                    backgroundColor: &apos;#df7b42&apos;, 
+                    justifyContent: &apos;center&apos;, 
+                    alignItems: &apos;center&apos;
+                  }}&gt;
+                    &lt;Text style={{color: &apos;#fff&apos;}}&gt;&#x62CD;&#x7167;&lt;/Text&gt;
+                  &lt;/View&gt;
+                &lt;/TouchableOpacity&gt;
+                &lt;View&gt;
+                  &lt;Image style={{marginLeft: 20, marginTop: 20, width: 240, height: 180}} source={{uri: this.state.picUri}}&gt;&lt;/Image&gt;
+                &lt;/View&gt;
+              &lt;/View&gt;
+            )
+        }
+      &lt;/&gt;
     )
   }
 }
-
-export default Top10
-</code></pre>
-<p>&#x6CE8;&#x610F;&#xFF1A;expo-cli &#x6784;&#x5EFA;&#x7684;&#x9879;&#x76EE;&#xFF0C;&#x9ED8;&#x8BA4; ts &#x914D;&#x7F6E;&#x4E0D;&#x652F;&#x6301;&#x88C5;&#x9970;&#x5668;&#xFF0C;&#x4F1A;&#x7ED9;&#x51FA;&#x5982;&#x4E0B;&#x8B66;&#x544A;&#xFF1A;</p>
-<pre><code>Experimental support for decorators is a feature that is subject to change in a future release. Set the &apos;experimentalDecorators&apos; option in your &apos;tsconfig&apos; or &apos;jsconfig&apos; to remove this warning.
-</code></pre><p>&#x9700;&#x8981;&#x4FEE;&#x6539;&#x9879;&#x76EE;&#x6839;&#x76EE;&#x5F55;&#x4E0B;&#x7684; tsconfig.json&#xFF0C;&#x6DFB;&#x52A0;&#xFF1A;</p>
-<pre><code>&quot;experimentalDecorators&quot;: true
-</code></pre><p>&#x5982;&#x679C;&#x4E0D;&#x80FD;&#x8D77;&#x4F5C;&#x7528;&#xFF0C;&#x91CD;&#x65B0;&#x542F;&#x52A8;VSCode&#x5373;&#x53EF;&#x3002;</p>
-<h2 id="&#x6DFB;&#x52A0;-top10-&#x6837;&#x5F0F;">&#x6DFB;&#x52A0; top10 &#x6837;&#x5F0F;</h2>
-<pre><code class="lang-js"><span class="hljs-comment">// pages/home/style_home.js</span>
-<span class="hljs-keyword">import</span> { StyleSheet } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react-native&apos;</span>
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> StyleSheet.create({
-  <span class="hljs-comment">// top10</span>
-  top10Container: {
-    paddingBottom: <span class="hljs-number">44</span>,
-    backgroundColor: <span class="hljs-string">&apos;#eee&apos;</span>
-  },
-
-  top10Head: {
-    height: <span class="hljs-number">50</span>,
-    paddingLeft: <span class="hljs-number">10</span>,
-    justifyContent: <span class="hljs-string">&apos;flex-end&apos;</span>,
-  },
-
-  top10HeadText: {
-    fontSize: <span class="hljs-number">18</span>
-  },
-
-  top10ItemContainer: {
-    flex: <span class="hljs-number">1</span>,
-    paddingRight: <span class="hljs-number">10</span>
-  },
-
-  top10DesContainter: {
-    marginLeft: <span class="hljs-number">10</span>,
-    paddingTop: <span class="hljs-number">10</span>,
-    paddingBottom: <span class="hljs-number">10</span>,
-    justifyContent: <span class="hljs-string">&apos;center&apos;</span>,
-    alignItems: <span class="hljs-string">&apos;center&apos;</span>,
-    backgroundColor: <span class="hljs-string">&apos;#fff&apos;</span>
-  },
-
-  top10ImgContainer: {
-    paddingLeft: <span class="hljs-number">10</span>,
-    paddingTop: <span class="hljs-number">10</span>,
-    flex: <span class="hljs-number">1</span>
-  },
-
-  Top10Img: {
-    width: <span class="hljs-string">&apos;100%&apos;</span>,
-    height: <span class="hljs-string">&apos;100%&apos;</span>,
-  },
-
-  top10Titie: {
-    fontSize: <span class="hljs-number">20</span>
-  },
-
-  Top10Desc: {
-    color: <span class="hljs-string">&apos;#666&apos;</span>
-  }
-})
 </code></pre>
 
                                 
@@ -723,12 +687,12 @@ export default Top10
 
             
                 
-                <a href="home-cate.html" class="navigation navigation-prev " aria-label="Previous page: 7、创建HotCate组件">
+                <a href="more-show-map.html" class="navigation navigation-prev " aria-label="Previous page: 14、是否显示地图页签">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="home-swiper-store.html" class="navigation navigation-next " aria-label="Next page: 9、更改Swiper和Home组件">
+                <a href="publish.html" class="navigation navigation-next " aria-label="Next page: 16、项目发布">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -739,7 +703,7 @@ export default Top10
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"8、创建Top10组件","level":"1.3.8","depth":2,"next":{"title":"9、更改Swiper和Home组件","level":"1.3.9","depth":2,"path":"project/home-swiper-store.md","ref":"project/home-swiper-store.md","articles":[]},"previous":{"title":"7、创建HotCate组件","level":"1.3.7","depth":2,"path":"project/home-cate.md","ref":"project/home-cate.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"project/home-top10.md","mtime":"2020-02-15T02:26:24.609Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-16T12:22:47.536Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"15、拍照功能","level":"1.3.15","depth":2,"next":{"title":"16、项目发布","level":"1.3.16","depth":2,"path":"project/publish.md","ref":"project/publish.md","articles":[]},"previous":{"title":"14、是否显示地图页签","level":"1.3.14","depth":2,"path":"project/more-show-map.md","ref":"project/more-show-map.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"project/more-take-picture.md","mtime":"2020-02-16T11:24:22.777Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-16T12:22:47.536Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

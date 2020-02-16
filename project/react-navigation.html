@@ -57,7 +57,7 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../thanks/README.md" />
+    <link rel="next" href="detail.html" />
     
     
     <link rel="prev" href="list.html" />
@@ -395,6 +395,71 @@
             
         </li>
     
+        <li class="chapter " data-level="1.3.12" data-path="detail.html">
+            
+                <a href="detail.html">
+            
+                    
+                    12、创建详情页
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.13" data-path="map.html">
+            
+                <a href="map.html">
+            
+                    
+                    13、创建美食地图页
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.14" data-path="more-show-map.html">
+            
+                <a href="more-show-map.html">
+            
+                    
+                    14、是否显示地图页签
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.15" data-path="more-take-picture.html">
+            
+                <a href="more-take-picture.html">
+            
+                    
+                    15、拍照功能
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.16" data-path="publish.html">
+            
+                <a href="publish.html">
+            
+                    
+                    16、项目发布
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -458,19 +523,680 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="react-navigation-&#x5BFC;&#x822A;&#x7CFB;&#x7EDF;">React Navigation &#x5BFC;&#x822A;&#x7CFB;&#x7EDF;</h1>
-<p>React Navigation&#xFF0C;&#x662F;&#x4E13;&#x95E8;&#x4E3A; React Native &#x7684;&#x5E94;&#x7528;&#x6253;&#x9020;&#x7684;&#x8DEF;&#x7531;&#x548C;&#x5BFC;&#x822A;&#x7CFB;&#x7EDF;&#x3002;</p>
-<h2 id="&#x7279;&#x70B9;">&#x7279;&#x70B9;</h2>
-<h4 id="&#x4F7F;&#x7528;&#x7B80;&#x5355;">&#x4F7F;&#x7528;&#x7B80;&#x5355;</h4>
-<p>&#x5F00;&#x7BB1;&#x5373;&#x7528;&#xFF0C;&#x4F53;&#x9A8C;&#x8D85;&#x597D;&#x7684;&#x5185;&#x7F6E;&#x5BFC;&#x822A;&#x5668;&#x3002;</p>
-<h4 id="&#x4E3A;ios&#x548C;android&#x6784;&#x5EFA;&#x7684;&#x7EC4;&#x4EF6;">&#x4E3A;iOS&#x548C;Android&#x6784;&#x5EFA;&#x7684;&#x7EC4;&#x4EF6;</h4>
-<p>&#x517C;&#x5BB9;iOS &#x548C; Android &#x5E73;&#x53F0;&#xFF0C;&#x6839;&#x636E;&#x7279;&#x5B9A;&#x7684;&#x5E73;&#x53F0;&#xFF0C;&#x6253;&#x9020;&#x5916;&#x89C2;&#x548C;&#x611F;&#x89C9;&#x4E0E;&#x5E73;&#x6ED1;&#x7684;&#x52A8;&#x753B;&#x548C;&#x624B;&#x52BF;&#x3002;</p>
-<h4 id="&#x5B8C;&#x5168;&#x53EF;&#x5B9A;&#x5236;">&#x5B8C;&#x5168;&#x53EF;&#x5B9A;&#x5236;</h4>
-<p>&#x5982;&#x679C;&#x4F60;&#x77E5;&#x9053;&#x5982;&#x4F55;&#x4F7F;&#x7528;JavaScript&#x7F16;&#x5199;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#xFF0C;&#x5219;&#x53EF;&#x4EE5;&#x81EA;&#x5B9A;&#x4E49;React&#x5BFC;&#x822A;&#x7684;&#x4EFB;&#x4F55;&#x90E8;&#x5206;&#x3002;</p>
-<h4 id="&#x5E73;&#x53F0;&#x6269;&#x5C55;&#x7279;&#x6027;">&#x5E73;&#x53F0;&#x6269;&#x5C55;&#x7279;&#x6027;</h4>
-<p>React Navigation &#x5728;&#x6BCF;&#x4E00;&#x5C42;&#x90FD;&#x662F;&#x53EF;&#x6269;&#x5C55;&#x7684;&#x2014;&#x2014;&#x4F60;&#x53EF;&#x4EE5;&#x7F16;&#x5199;&#x81EA;&#x5DF1;&#x7684;&#x5BFC;&#x822A;&#x5668;&#xFF0C;&#x751A;&#x81F3;&#x53EF;&#x4EE5;&#x66FF;&#x6362;&#x9762;&#x5411;&#x7528;&#x6237;&#x7684;API&#x3002;</p>
-<h2 id="&#x57FA;&#x7840;">&#x57FA;&#x7840;</h2>
-<h3 id="&#x8D77;&#x6B65;">&#x8D77;&#x6B65;</h3>
+                                <h1 id="&#x914D;&#x7F6E;&#x5BFC;&#x822A;">&#x914D;&#x7F6E;&#x5BFC;&#x822A;</h1>
+<p>&#x672C;&#x9879;&#x76EE;&#x5E94;&#x7528; React Navigation &#x6784;&#x5EFA;&#x8DEF;&#x7531;&#x7CFB;&#x7EDF;&#x3002;&#x6709;&#x5173; React Navigation &#x8BF7;&#x53C2;&#x9605; &lt;&#x5343;&#x950B;&#x5927;&#x524D;&#x7AEF;&#x5C0F;&#x518C;&gt; &#x7CFB;&#x5217;&#x4E4B; React Navigation &#x90E8;&#x5206;&#x300B;&#x3002;</p>
+<h2 id="&#x5B89;&#x88C5;-react-navigation-&#x73AF;&#x5883;">&#x5B89;&#x88C5; React Navigation &#x73AF;&#x5883;</h2>
+<pre><code>npm install @react-navigation/native
+
+npm install react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context @react-native-community/masked-view
+
+npm install @react-navigation/stack
+</code></pre><h2 id="&#x7ED9;apptsx&#x914D;&#x7F6E;&#x8DEF;&#x7531;">&#x7ED9;App.tsx&#x914D;&#x7F6E;&#x8DEF;&#x7531;</h2>
+<pre><code class="lang-ts">import React from &apos;react&apos;
+import { NavigationContainer } from &apos;@react-navigation/native&apos;
+import { createStackNavigator } from &apos;@react-navigation/stack&apos;
+
+import { Provider } from &apos;mobx-react&apos;
+import store from &apos;./store/&apos;
+
+import Index from &apos;./pages/index/Index&apos;
+import List from &apos;./pages/list/List&apos;
+import Detail from &apos;./pages/detail/Detail&apos;
+
+const Stack = createStackNavigator()
+
+export default function App() {
+
+  // &#x8FD9;&#x91CC;&#x914D;&#x7F6E;&#x4E86;&#x4E09;&#x4E2A;&#x9875;&#x9762;
+  return (
+    &lt;NavigationContainer&gt;
+      &lt;Provider store={store}&gt;
+        &lt;Stack.Navigator
+          screenOptions={{ 
+            headerStyle: {
+              backgroundColor: &apos;#ee7530&apos;
+            },
+            headerTintColor: &apos;#fff&apos;,
+            headerTitleStyle: {
+              fontWeight: &apos;bold&apos;,
+              fontSize: 20
+            }
+          }}
+        &gt;
+          &lt;Stack.Screen 
+            name=&quot;Index&quot; 
+            component={Index}
+            options={{ 
+              title: &apos;&#x9996;&#x9875;&apos;
+            }}
+          /&gt;
+          &lt;Stack.Screen
+            name=&quot;List&quot;
+            component={List}
+            options={{
+              title: &apos;&#x70ED;&#x95E8;&apos;
+            }}
+          /&gt;
+          &lt;Stack.Screen
+            name=&quot;Detail&quot;
+            component={Detail}
+            options={{
+              title: &apos;&#x8BE6;&#x60C5;&apos;
+            }}
+          /&gt;
+        &lt;/Stack.Navigator&gt;
+      &lt;/Provider&gt;
+    &lt;/NavigationContainer&gt;
+  )
+}
+</code></pre>
+<h2 id="&#x521B;&#x5EFA;-context">&#x521B;&#x5EFA; Context</h2>
+<p>&#x4E3A;&#x4E86;&#x8BA9;&#x7EC4;&#x4EF6;&#x80FD;&#x6536;&#x5230;&#x8DEF;&#x7531;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x81EA;&#x5DF1;&#x6784;&#x5EFA;&#x4E86;&#x4E00;&#x4E2A; Context&#x3002;</p>
+<p>&#x5728;&#x6839;&#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;context&#x76EE;&#x5F55;&#xFF0C;&#x5728;&#x6B64;&#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA;&#x4E00;&#x4E2A; <code>navigation.js</code> &#x6587;&#x4EF6;&#xFF0C;&#x5185;&#x5BB9;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-js"><span class="hljs-comment">// context/navigations.js</span>
+
+<span class="hljs-keyword">import</span> { createContext } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>
+
+<span class="hljs-keyword">const</span> navigationContext = createContext()
+
+<span class="hljs-keyword">let</span> { Provider, Consumer } = navigationContext
+
+<span class="hljs-keyword">export</span> {
+  navigationContext,
+  Provider,
+  Consumer
+}
+</code></pre>
+<h2 id="&#x4FEE;&#x6539;-indextsx">&#x4FEE;&#x6539; index.tsx</h2>
+<h5 id="1&#x89E3;&#x6784;&#x51FA;provider">1.&#x89E3;&#x6784;&#x51FA;Provider</h5>
+<pre><code class="lang-js"><span class="hljs-keyword">import</span> { Provider } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../../context/navigation&apos;</span>
+</code></pre>
+<h5 id="2&#x901A;&#x8FC7;context-&#x7684;provider&#xFF0C;&#x5C06;props&#x9012;&#x4EA4;&#x7ED9;&#x540E;&#x4EE3;&#x7EC4;&#x4EF6;">2.&#x901A;&#x8FC7;Context &#x7684;Provider&#xFF0C;&#x5C06;props&#x9012;&#x4EA4;&#x7ED9;&#x540E;&#x4EE3;&#x7EC4;&#x4EF6;</h5>
+<pre><code class="lang-js">&lt;Provider value={{...this.props}}&gt;
+  &lt;Home&gt;&lt;/Home&gt;
+&lt;/Provider&gt;
+
+&lt;Provider value={{...this.props}}&gt;
+  &lt;List&gt;&lt;/List&gt;
+&lt;/Provider&gt;
+</code></pre>
+<h5 id="3&#x5168;&#x90E8;&#x5185;&#x5BB9;">3.&#x5168;&#x90E8;&#x5185;&#x5BB9;</h5>
+<pre><code class="lang-ts">// pages/index/Index.tsx
+
+import React, { Component, ContextType } from &apos;react&apos;
+import TabNavigator from &apos;react-native-tab-navigator&apos;
+import * as Device from &apos;expo-device&apos;
+
+// &#x89E3;&#x6784;&#x51FA; Provider
+import { Provider } from &apos;../../context/navigation&apos;
+
+import {
+  View,
+  Text
+} from &apos;react-native&apos;
+
+import {
+  Img
+} from &apos;./styled_index&apos;
+import styles from &apos;./style_index&apos;
+
+import cookbook from &apos;../../assets/images/cookbook.png&apos;
+import cookbookActive from &apos;../../assets/images/cookbook-active.png&apos;
+import category from &apos;../../assets/images/menu.png&apos;
+import categoryActive from &apos;../../assets/images/menu-active.png&apos;
+import map from &apos;../../assets/images/location.png&apos;
+import mapActive from &apos;../../assets/images/location-active.png&apos;
+import more from &apos;../../assets/images/more.png&apos;
+import moreActive from &apos;../../assets/images/more-active.png&apos;
+
+import Home from &apos;../home/Home&apos;
+import List from &apos;../list/List&apos;
+import Detail from &apos;../detail/Detail&apos;
+
+interface Props {
+  navigation?: any
+}
+
+interface State {
+  selectedTab: string
+}
+
+class Index extends Component&lt;Props, State&gt; {
+  constructor(props: Props) {
+    super(props)
+  }
+
+  state: State = {
+    selectedTab: &apos;home&apos;
+  }
+
+
+  componentDidMount() {
+
+  }
+
+  render() {
+    return (
+      &lt;&gt;
+        &lt;TabNavigator
+          tabBarStyle={Device.deviceName === &apos;iPhone X&#x280;&apos; ? styles.tabBarStyle : null}
+        &gt;
+          &lt;TabNavigator.Item
+            selected={this.state.selectedTab === &apos;home&apos;}
+            title=&quot;&#x7F8E;&#x98DF;&#x5927;&#x5168;&quot;
+            titleStyle={styles.titleStyle}
+            selectedTitleStyle={styles.selectedTitleStyle}
+            renderIcon={() =&gt; &lt;Img source={cookbook} /&gt;}
+            renderSelectedIcon={() =&gt; &lt;Img source={cookbookActive} /&gt;}
+            onPress={() =&gt; {
+              this.setState({ selectedTab: &apos;home&apos; })
+              this.props.navigation.setOptions({ title: &apos;&#x7F8E;&#x98DF;&#x5927;&#x5168;&apos; })
+            }}
+          &gt;
+            {/* &#x901A;&#x8FC7;Context &#x7684;Provider&#xFF0C;&#x5C06;props&#x9012;&#x4EA4;&#x7ED9;&#x540E;&#x4EE3;&#x7EC4;&#x4EF6; */}
+            &lt;Provider value={{...this.props}}&gt;
+              &lt;Home&gt;&lt;/Home&gt;
+            &lt;/Provider&gt;
+          &lt;/TabNavigator.Item&gt;
+          &lt;TabNavigator.Item
+            selected={this.state.selectedTab === &apos;category&apos;}
+            title=&quot;&#x70ED;&#x95E8;&quot;
+            titleStyle={styles.titleStyle}
+            selectedTitleStyle={styles.selectedTitleStyle}
+            renderIcon={() =&gt; &lt;Img source={category} /&gt;}
+            renderSelectedIcon={() =&gt; &lt;Img source={categoryActive} /&gt;}
+            onPress={
+              () =&gt; {
+                this.setState({ selectedTab: &apos;category&apos; })
+                this.props.navigation.setOptions({ title: &apos;&#x70ED;&#x95E8;&apos; })
+              }
+            }
+          &gt;
+            {/* &#x901A;&#x8FC7;Context &#x7684;Provider&#xFF0C;&#x5C06;props&#x9012;&#x4EA4;&#x7ED9;&#x540E;&#x4EE3;&#x7EC4;&#x4EF6; */}
+            &lt;Provider value={{...this.props}}&gt;
+              &lt;List&gt;&lt;/List&gt;
+            &lt;/Provider&gt;
+          &lt;/TabNavigator.Item&gt;
+          &lt;TabNavigator.Item
+            selected={this.state.selectedTab === &apos;map&apos;}
+            title=&quot;&#x5730;&#x56FE;&quot;
+            titleStyle={styles.titleStyle}
+            selectedTitleStyle={styles.selectedTitleStyle}
+            renderIcon={() =&gt; &lt;Img source={map} /&gt;}
+            renderSelectedIcon={() =&gt; &lt;Img source={mapActive} /&gt;}
+            onPress={() =&gt; {
+              this.setState({ selectedTab: &apos;map&apos; })
+              this.props.navigation.setOptions({ title: &apos;&#x5730;&#x56FE;&apos; })
+            }}
+          &gt;
+            {&lt;View&gt;&lt;Text&gt;&#x5730;&#x56FE;&lt;/Text&gt;&lt;/View&gt;}
+          &lt;/TabNavigator.Item&gt;
+          &lt;TabNavigator.Item
+            selected={this.state.selectedTab === &apos;more&apos;}
+            title=&quot;&#x66F4;&#x591A;&quot;
+            titleStyle={styles.titleStyle}
+            selectedTitleStyle={styles.selectedTitleStyle}
+            renderIcon={() =&gt; &lt;Img source={more} /&gt;}
+            renderSelectedIcon={() =&gt; &lt;Img source={moreActive} /&gt;}
+            onPress={() =&gt; {
+              this.setState({ selectedTab: &apos;more&apos; })
+              this.props.navigation.setOptions({ title: &apos;&#x66F4;&#x591A;&apos; })
+            }}
+          &gt;
+            {&lt;View&gt;&lt;Text&gt;&#x66F4;&#x591A;&lt;/Text&gt;&lt;/View&gt;}
+          &lt;/TabNavigator.Item&gt;
+        &lt;/TabNavigator&gt;
+      &lt;/&gt;
+    )
+  }
+}
+
+export default Index
+</code></pre>
+<h2 id="&#x4FEE;&#x6539;-hometsx">&#x4FEE;&#x6539; home.tsx</h2>
+<h5 id="1-&#x5C06;&#x8DEF;&#x7531;&#x4FE1;&#x606F;&#x4F20;&#x7ED9;hotcate">1. &#x5C06;&#x8DEF;&#x7531;&#x4FE1;&#x606F;&#x4F20;&#x7ED9;HotCate</h5>
+<pre><code class="lang-js">&lt;HotCate { ...this.props }&gt;<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">HotCate</span>&gt;</span></span>
+</code></pre>
+<h5 id="2&#x5B9A;&#x4E49;props">2.&#x5B9A;&#x4E49;Props</h5>
+<pre><code class="lang-js">interface Props {
+  navigation?: any
+}
+</code></pre>
+<h5 id="3&#x5168;&#x90E8;&#x5185;&#x5BB9;">3.&#x5168;&#x90E8;&#x5185;&#x5BB9;</h5>
+<pre><code class="lang-ts">// pages/home/Home.tsx
+
+import React, { Component } from &apos;react&apos;
+import { ScrollView, StatusBar } from &apos;react-native&apos;
+
+import Swiper from &apos;./Swiper&apos;
+import HotCate from &apos;./HotCate&apos;
+import Top10 from &apos;./Top10&apos;
+
+interface Props {
+  navigation?: any
+}
+
+interface State {
+
+}
+
+class Home extends Component&lt;Props, State&gt; {
+  render() {
+    return (
+      &lt;ScrollView&gt;
+        &lt;StatusBar backgroundColor=&quot;blue&quot; barStyle=&quot;light-content&quot; /&gt;
+        &lt;Swiper&gt;&lt;/Swiper&gt;
+        {/* &#x5C06;&#x8DEF;&#x7531;&#x4FE1;&#x606F;&#x4F20;&#x7ED9;HotCate */}
+        &lt;HotCate { ...this.props }&gt;&lt;/HotCate&gt;
+        &lt;Top10&gt;&lt;/Top10&gt;
+      &lt;/ScrollView&gt;
+    )
+  }
+}
+
+export default Home
+</code></pre>
+<h2 id="&#x4FEE;&#x6539;-hotcatetsx">&#x4FEE;&#x6539; HotCate.tsx</h2>
+<h5 id="1-&#x5BFC;&#x5165;">1. &#x5BFC;&#x5165;</h5>
+<pre><code class="lang-js"><span class="hljs-keyword">import</span> { Consumer } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../../context/navigation&apos;</span>
+</code></pre>
+<h5 id="2-&#x8DEF;&#x7531;&#x5230;&#x70ED;&#x95E8;&#x9875;&#x9762;">2. &#x8DEF;&#x7531;&#x5230;&#x201C;&#x70ED;&#x95E8;&#x201D;&#x9875;&#x9762;</h5>
+<pre><code class="lang-js">_onPress = (navigation) =&gt; {
+  return () =&gt; {
+    navigation.push(&apos;List&apos;)
+  }
+}
+
+&lt;View style={styles.container}&gt;
+  &lt;Consumer&gt;
+    {
+      ({navigation}) =&gt; {
+        return (
+          &lt;Grid
+            data={this.state.hotCate}
+            renderItem={this._renderItem}
+            hasLine={false}
+            onPress={this._onPress(navigation)}
+          &gt;&lt;/Grid&gt;
+        )
+      }
+    }
+  &lt;/Consumer&gt;
+&lt;/View&gt;
+</code></pre>
+<h6 id="3-&#x5168;&#x90E8;&#x4EE3;&#x7801;">3. &#x5168;&#x90E8;&#x4EE3;&#x7801;</h6>
+<pre><code class="lang-ts">// pages/home/HotCate.tsx
+
+import React, { Component } from &apos;react&apos;
+import { Grid } from &apos;@ant-design/react-native&apos;
+import { get } from &apos;../../utils/http&apos;
+import { Consumer } from &apos;../../context/navigation&apos;
+
+import styles from &apos;./style_home&apos;
+
+import {
+  View,
+  Text,
+  Image
+} from &apos;react-native&apos;
+
+interface Props {
+
+}
+interface State {
+  hotCate: Array&lt;object&gt;
+}
+
+export default class HotCate extends Component&lt;Props, State&gt; {
+  state = {
+    hotCate: []
+  }
+
+  _renderItem(el, index) {
+    return (
+      &lt;View
+        style={styles.gridContainer}
+      &gt;
+        {el.img ? &lt;Image source={{uri: el.img}} style={styles.gridImg}&gt;&lt;/Image&gt; : null}
+        &lt;Text style={styles.gridText}&gt;{el.title}&lt;/Text&gt;
+      &lt;/View&gt;
+    )
+  }
+
+  _onPress = (navigation) =&gt; {
+    return () =&gt; {
+      navigation.push(&apos;List&apos;)
+    }
+  }
+
+  async componentDidMount() {
+    let hotCate = await get(&apos;http://localhost:9000/api/hotcate&apos;)
+
+    // &#x8865;&#x5168;&#x6700;&#x540E;&#x4E00;&#x9879;&#x6570;&#x636E;
+    hotCate.push({
+      img: &apos;&apos;,
+      title: &apos;&#x66F4;&#x591A;...&apos;
+    })
+
+    this.setState({
+      hotCate
+    })
+  }
+
+  render() {
+    return (
+      &lt;View style={styles.container}&gt;
+        &lt;Consumer&gt;
+          {
+            ({navigation}) =&gt; {
+              return (
+                &lt;Grid
+                  data={this.state.hotCate}
+                  renderItem={this._renderItem}
+                  hasLine={false}
+                  onPress={this._onPress(navigation)}
+                &gt;&lt;/Grid&gt;
+              )
+            }
+          }
+        &lt;/Consumer&gt;
+      &lt;/View&gt;
+    )
+  }
+}
+</code></pre>
+<h2 id="&#x4FEE;&#x6539;-top10tsx">&#x4FEE;&#x6539; Top10.tsx</h2>
+<h5 id="1-&#x901A;&#x8FC7;-contexttype-&#x5B9A;&#x4E49;-context">1. &#x901A;&#x8FC7; contextType &#x5B9A;&#x4E49; context</h5>
+<pre><code class="lang-ts"><span class="hljs-keyword">import</span> { navigationContext } from <span class="hljs-string">&apos;../../context/navigation&apos;</span>
+</code></pre>
+<h5 id="2-&#x5BFC;&#x822A;&#x5230;&#x8BE6;&#x60C5;&#x9875;&#xFF0C;&#x5E76;&#x4F20;&#x53C2;">2. &#x5BFC;&#x822A;&#x5230;&#x8BE6;&#x60C5;&#x9875;&#xFF0C;&#x5E76;&#x4F20;&#x53C2;</h5>
+<pre><code class="lang-ts"><span class="hljs-keyword">import</span> { navigationContext } from <span class="hljs-string">&apos;../../context/navigation&apos;</span>
+
+<span class="hljs-keyword">static</span> contextType = navigationContext
+
+_onPress = (e) =&gt; {
+  <span class="hljs-keyword">this</span>.context.navigation.push(<span class="hljs-string">&apos;Detail&apos;</span>, { name: e.name })
+}
+
+&lt;Grid
+  data={<span class="hljs-keyword">this</span>.props.store.top10}
+  columnNum={<span class="hljs-number">2</span>}
+  hasLine={<span class="hljs-literal">false</span>}
+  renderItem={<span class="hljs-keyword">this</span>._renderTop10}
+  onPress={<span class="hljs-keyword">this</span>._onPress}
+/&gt;
+</code></pre>
+<h5 id="3-&#x5168;&#x90E8;&#x4EE3;&#x7801;">3. &#x5168;&#x90E8;&#x4EE3;&#x7801;</h5>
+<pre><code class="lang-ts">// pages/home/Top10.tsx
+
+import React, { Component } from &apos;react&apos;
+import { Grid } from &apos;@ant-design/react-native&apos;
+import { observer, inject } from &apos;mobx-react&apos;
+import { navigationContext } from &apos;../../context/navigation&apos;
+
+import {
+  View,
+  Text,
+  Image
+} from &apos;react-native&apos;
+
+import styles from &apos;./style_home.js&apos;
+
+interface Props {
+  // store &#x4F5C;&#x4E3A;&#x7EC4;&#x4EF6;&#x7684; props
+  store?: any
+}
+
+interface State {
+
+}
+
+// &#x6CE8;&#x5165; store &#x4E0E; &#x5C06;&#x7C7B;&#x53D8;&#x4E3A;&#x53EF;&#x89C2;&#x5BDF;&#x7684;&#x5BF9;&#x8C61;
+@inject(&apos;store&apos;)
+@observer
+class Top10 extends Component&lt;Props, State&gt; {
+
+  static contextType = navigationContext
+
+  _renderTop10(el, index) {
+    return (
+      &lt;View style={styles.top10ItemContainer}&gt;
+        &lt;View style={styles.top10ImgContainer}&gt;
+          &lt;Image style={styles.Top10Img} source={{uri: el.img}}&gt;&lt;/Image&gt;
+        &lt;/View&gt;
+        &lt;View style={styles.top10DesContainter}&gt;
+          &lt;Text style={styles.top10Titie}&gt;{el.name}&lt;/Text&gt;
+          &lt;Text style={styles.Top10Desc}&gt;{el.all_click} {el.favorites}&lt;/Text&gt;
+        &lt;/View&gt;
+      &lt;/View&gt;
+    )
+  }
+
+  _onPress = (e) =&gt; {
+    this.context.navigation.push(&apos;Detail&apos;, { name: e.name })
+  }
+
+  render() {   
+    return (
+      &lt;View style={styles.top10Container}&gt;
+        &lt;View style={styles.top10Head}&gt;
+          &lt;Text style={styles.top10HeadText}&gt;&#x7CBE;&#x54C1;&#x597D;&#x83DC;&lt;/Text&gt;
+        &lt;/View&gt;
+        &lt;View style={styles.gridContainer}&gt;
+          &lt;Grid
+            data={this.props.store.top10}
+            columnNum={2}
+            hasLine={false}
+            renderItem={this._renderTop10}
+            onPress={this._onPress}
+          /&gt;
+        &lt;/View&gt;
+      &lt;/View&gt;
+    )
+  }
+}
+
+export default Top10
+</code></pre>
+<h2 id="&#x4FEE;&#x6539;-listtsx">&#x4FEE;&#x6539; List.tsx</h2>
+<h5 id="1-&#x8F7D;&#x5165;&#x8DEF;&#x7531;&#x76F8;&#x5173;&#x6A21;&#x5757;&#xFF0C;&#x5B9E;&#x73B0;&#x8DEF;&#x7531;&#x5230;&#x8BE6;&#x60C5;&#x9875;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x4E3B;&#x8981;&#x4EE3;&#x7801;&#xFF1A;">1. &#x8F7D;&#x5165;&#x8DEF;&#x7531;&#x76F8;&#x5173;&#x6A21;&#x5757;&#xFF0C;&#x5B9E;&#x73B0;&#x8DEF;&#x7531;&#x5230;&#x8BE6;&#x60C5;&#x9875;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x4E3B;&#x8981;&#x4EE3;&#x7801;&#xFF1A;</h5>
+<pre><code class="lang-js">// 1. &#x8F7D;&#x5165;Context
+import { navigationContext } from &apos;../../context/navigation&apos;
+
+// 2. &#x5728; Props &#x91CC;&#x5B9A;&#x4E49; navigation
+interface Props {
+  store?: any,
+  navigation?: any
+}
+
+// 3. &#x5728;&#x7C7B;&#x91CC;&#x5B9A;&#x4E49; contextType &#x9759;&#x6001;&#x53D8;&#x91CF;
+static contextType = navigationContext
+
+// 4. &#x5728;&#x7EC4;&#x4EF6;&#x7C7B;&#x91CC;&#x5B9A;&#x4E49;&#x8DEF;&#x7531;&#x8DF3;&#x8F6C;&#x54CD;&#x5E94;&#x65B9;&#x6CD5;
+_onPress = (name: string) =&gt; {
+  return () =&gt; {
+    // &#x9274;&#x4E8E;&#x6B64;&#x9875;&#x9762;&#x4ECE; TabBar &#x548C; &#x9996;&#x9875;&#x4E24;&#x4E2A;&#x5165;&#x53E3;&#x8FDB;&#x5165;
+    // &#x8DEF;&#x7531;&#x8DF3;&#x8F6C;&#x7684;&#x65B9;&#x5F0F;&#x4E5F;&#x4E0D;&#x540C;
+    if (this.context) {
+      // &#x4ECE;Tabbar&#x8FDB;&#x5165;
+      this.context.navigation.push(&apos;Detail&apos;, {name})
+    } else {
+      // &#x4ECE;&#x9996;&#x9875;&#x8FDB;&#x5165;
+      this.props.navigation.push(&apos;Detail&apos;, {name})
+    }
+  }
+}
+
+// 5. &#x5E94;&#x7528; TouchableOpacity &#x7EC4;&#x4EF6;&#x7ED1;&#x5B9A;&#x8DEF;&#x7531;&#x8DF3;&#x8F6C;&#x4E8B;&#x4EF6;
+&lt;TouchableOpacity
+  onPress={this._onPress(name)}
+&gt;
+  &lt;View style={styles.listWrap}&gt;
+    &lt;View style={styles.imgWrap}&gt;
+      &lt;Image style={styles.image} source={{uri: img}}&gt;&lt;/Image&gt;
+    &lt;/View&gt;
+    &lt;View style={styles.descWrap}&gt;
+      &lt;Text style={styles.title}&gt;{name}&lt;/Text&gt;
+      &lt;Text style={styles.subtitle} numberOfLines={1}&gt;{burdens}&lt;/Text&gt;
+      &lt;Text style={styles.desc}&gt;{all_click} {favorites}&lt;/Text&gt;
+    &lt;/View&gt;
+  &lt;/View&gt;
+&lt;/TouchableOpacity&gt;
+</code></pre>
+<h5 id="2-&#x5168;&#x90E8;&#x4EE3;&#x7801;">2. &#x5168;&#x90E8;&#x4EE3;&#x7801;</h5>
+<pre><code class="lang-js"><span class="hljs-keyword">import</span> React, { Component, createRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>
+<span class="hljs-keyword">import</span> { navigationContext } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../../context/navigation&apos;</span>
+
+<span class="hljs-keyword">import</span> {
+  inject,
+  observer
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;mobx-react&apos;</span>
+
+<span class="hljs-keyword">import</span> {
+  View,
+  Text,
+  Image,
+  FlatList,
+  TouchableOpacity
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react-native&apos;</span>
+
+<span class="hljs-keyword">import</span> styles <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./style_list&apos;</span>
+
+interface Props {
+  store?: any,
+  navigation?: any
+}
+
+interface State {
+  <span class="hljs-comment">// &#x8BB0;&#x5F55;&#x4E0A;&#x62C9;&#x52A0;&#x8F7D;&#x66F4;&#x591A;&#x7684;&#x5F53;&#x524D;&#x9875;&#x7801;</span>
+  curPage: number, 
+
+  <span class="hljs-comment">// &#x9875;&#x9762;&#x663E;&#x793A;&#x7684;&#x6570;&#x636E;</span>
+  datalist: <span class="hljs-built_in">Array</span>&lt;object&gt;, 
+
+  <span class="hljs-comment">// &#x63A7;&#x5236;&#x4E0B;&#x62C9;&#x5237;&#x65B0;&#x7684;&#x5F00;&#x5173;</span>
+  refresh: boolean 
+}
+
+<span class="hljs-keyword">let</span> pageSize = <span class="hljs-number">10</span>
+
+@inject(<span class="hljs-string">&apos;store&apos;</span>)
+@observer
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">List</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span>&lt;<span class="hljs-title">Props</span>, <span class="hljs-title">State</span>&gt; </span>{
+  <span class="hljs-keyword">constructor</span> (
+    public props: Props, 
+    public flatlist,
+  ) {
+    <span class="hljs-keyword">super</span>(props)
+    <span class="hljs-keyword">this</span>.flatlist = createRef()
+  }
+
+  state = {
+    curPage: <span class="hljs-number">1</span>,
+    datalist: [],
+    refresh: <span class="hljs-literal">false</span>
+  }
+
+  <span class="hljs-keyword">static</span> contextType = navigationContext
+
+  _onPress = (name: string) =&gt; {
+    <span class="hljs-keyword">return</span> () =&gt; {
+      <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.context) {
+        <span class="hljs-keyword">this</span>.context.navigation.push(<span class="hljs-string">&apos;Detail&apos;</span>, {name})
+      } <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">this</span>.props.navigation.push(<span class="hljs-string">&apos;Detail&apos;</span>, {name})
+      }
+    }
+  }
+
+  <span class="hljs-comment">// &#x6E32;&#x67D3; Flatlist &#x7EC4;&#x4EF6;&#x6570;&#x636E;</span>
+  _renderItem(item) {
+    <span class="hljs-keyword">let</span> {img, name, burdens, all_click, favorites} = item.item.data   
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">TouchableOpacity</span>
+        <span class="hljs-attr">onPress</span>=<span class="hljs-string">{this._onPress(name)}</span>
+      &gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">View</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{styles.listWrap}</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">View</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{styles.imgWrap}</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">Image</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{styles.image}</span> <span class="hljs-attr">source</span>=<span class="hljs-string">{{uri:</span> <span class="hljs-attr">img</span>}}&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">Image</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">View</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">View</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{styles.descWrap}</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">Text</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{styles.title}</span>&gt;</span>{name}<span class="hljs-tag">&lt;/<span class="hljs-name">Text</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">Text</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{styles.subtitle}</span> <span class="hljs-attr">numberOfLines</span>=<span class="hljs-string">{1}</span>&gt;</span>{burdens}<span class="hljs-tag">&lt;/<span class="hljs-name">Text</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">Text</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{styles.desc}</span>&gt;</span>{all_click} {favorites}<span class="hljs-tag">&lt;/<span class="hljs-name">Text</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">View</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">View</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">TouchableOpacity</span>&gt;</span></span>
+    )
+  }
+
+  <span class="hljs-comment">// &#x5904;&#x7406;&#x7528;&#x6237;&#x62C9;&#x5230;&#x5E95;&#x7AEF;&#x7684;&#x54CD;&#x5E94;&#x51FD;&#x6570;</span>
+  _handleReachEnd() {
+    <span class="hljs-comment">// &#x5982;&#x679C;&#x8FD8;&#x6709;&#x6570;&#x636E;&#xFF0C;&#x4E00;&#x76F4;&#x52A0;&#x8F7D;</span>
+    <span class="hljs-comment">// &#x52A0;&#x8F7D;&#x66F4;&#x591A;&#xFF0C;&#x7531;&#x4E8E;Mock&#x6570;&#x636E;&#x95EE;&#x9898;&#xFF0C;&#x6709;ID&#x91CD;&#x590D;&#x95EE;&#x9898;</span>
+    <span class="hljs-comment">// if (this.state.curPage &lt; Math.ceil(this.props.store.list.length / pageSize)) {</span>
+    <span class="hljs-comment">//   console.log(this.state.curPage)</span>
+    <span class="hljs-comment">//   this.setState((state) =&gt; {</span>
+    <span class="hljs-comment">//     return {</span>
+    <span class="hljs-comment">//       curPage: state.curPage + 1</span>
+    <span class="hljs-comment">//     }</span>
+    <span class="hljs-comment">//   }, () =&gt; {</span>
+    <span class="hljs-comment">//     this._loadData()</span>
+    <span class="hljs-comment">//   })</span>
+    <span class="hljs-comment">// }</span>
+  }
+
+  <span class="hljs-comment">// &#x4E0B;&#x62C9;&#x5237;&#x65B0;&#x7684;&#x54CD;&#x5E94;&#x51FD;&#x6570;</span>
+  _handleRefresh() {
+    <span class="hljs-keyword">this</span>.setState({
+      refresh: <span class="hljs-literal">true</span>
+    })
+
+    <span class="hljs-comment">// &#x6B64;&#x5904;&#x53EF;&#x4EE5;&#x5F02;&#x6B65;&#x83B7;&#x53D6;&#x540E;&#x7AEF;&#x63A5;&#x53E3;&#x6570;&#x636E;&#xFF0C;&#x5177;&#x4F53;&#x5B9E;&#x73B0;&#x601D;&#x8DEF;&#x89C1;&#x4E0A;&#x62C9;&#x52A0;&#x8F7D;&#x3002;</span>
+    setTimeout(() =&gt; {
+      <span class="hljs-keyword">this</span>.setState({
+        refresh: <span class="hljs-literal">false</span>
+      })
+    }, <span class="hljs-number">2000</span>)
+  }
+
+  <span class="hljs-comment">// &#x52A0;&#x8F7D;&#x6570;&#x636E;</span>
+  _loadData() {
+    <span class="hljs-keyword">let</span> data = <span class="hljs-keyword">this</span>.props.store.list.slice(<span class="hljs-number">0</span>, <span class="hljs-keyword">this</span>.state.curPage * pageSize)    
+    <span class="hljs-keyword">let</span> flatListData = data.map((value, index) =&gt; ({
+        data: value,
+        key: value.id
+      })
+    )
+    <span class="hljs-keyword">this</span>.setState({
+      datalist: flatListData
+    })
+  }
+
+  <span class="hljs-comment">// &#x6267;&#x884C;&#x7B2C;&#x4E00;&#x6B21;&#x6570;&#x636E;&#x52A0;&#x8F7D;</span>
+  componentDidMount() {
+    setTimeout((params) =&gt; {
+      <span class="hljs-keyword">this</span>._loadData()
+    }, <span class="hljs-number">0</span>)
+  }
+
+  render() {
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">View</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{styles.container}</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">FlatList</span>
+          <span class="hljs-attr">ref</span>=<span class="hljs-string">{this.flatlist}</span>
+          <span class="hljs-attr">renderItem</span>=<span class="hljs-string">{this._renderItem.bind(this)}</span>
+          <span class="hljs-attr">data</span>=<span class="hljs-string">{this.state.datalist}</span>
+          <span class="hljs-attr">refreshing</span>=<span class="hljs-string">{this.state.refresh}</span>
+          <span class="hljs-attr">onEndReached</span>=<span class="hljs-string">{this._handleReachEnd.bind(this)}</span>
+          <span class="hljs-attr">onEndReachedThreshold</span>=<span class="hljs-string">{1}</span>
+          <span class="hljs-attr">onRefresh</span>=<span class="hljs-string">{this._handleRefresh.bind(this)}</span>
+        &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">FlatList</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">View</span>&gt;</span></span>
+    )
+  }
+}
+</code></pre>
 
                                 
                                 </section>
@@ -503,7 +1229,7 @@
                 </a>
                 
                 
-                <a href="../thanks/README.md" class="navigation navigation-next " aria-label="Next page: 感谢">
+                <a href="detail.html" class="navigation navigation-next " aria-label="Next page: 12、创建详情页">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -514,7 +1240,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"11、react-navigation","level":"1.3.11","depth":2,"next":{"title":"感谢","level":"1.4","depth":1,"path":"thanks/README.md","ref":"thanks/README.md","articles":[]},"previous":{"title":"10、创建List组件","level":"1.3.10","depth":2,"path":"project/list.md","ref":"project/list.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"project/react-navigation.md","mtime":"2020-02-15T07:36:20.339Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-15T12:55:27.080Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"11、react-navigation","level":"1.3.11","depth":2,"next":{"title":"12、创建详情页","level":"1.3.12","depth":2,"path":"project/detail.md","ref":"project/detail.md","articles":[]},"previous":{"title":"10、创建List组件","level":"1.3.10","depth":2,"path":"project/list.md","ref":"project/list.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"project/react-navigation.md","mtime":"2020-02-16T09:58:12.149Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-16T12:22:47.536Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
